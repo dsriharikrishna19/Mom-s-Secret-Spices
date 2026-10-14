@@ -13,7 +13,7 @@ export default function ContactPage() {
   const whatsapp = SITE_INFO.whatsappNumber;
 
   return (
-    <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex flex-col gap-8 md:gap-10">
+    <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex flex-col gap-8 md:gap-10">
       <div className="max-w-2xl flex flex-col gap-2.5">
         <span className="self-start inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-brand-gold/15 text-brand-brown border border-brand-gold/30">
           Support & Enquiries

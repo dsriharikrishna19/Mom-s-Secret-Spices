@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageTransitionWrapper from "@/components/layout/PageTransitionWrapper";
+import { WhatsAppBot } from "@/components/shared/WhatsAppBot";
 import { SITE_INFO } from "@/data/info";
 
 const inter = Inter({
@@ -79,6 +80,7 @@ export default function RootLayout({
         <Header />
         <PageTransitionWrapper>{children}</PageTransitionWrapper>
         <Footer />
+        <WhatsAppBot />
       </body>
     </html>
   );

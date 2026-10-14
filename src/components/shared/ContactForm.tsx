@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { MailIcon, SendIcon } from "@/components/ui/Icons";
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
+import { fireCookingCelebration } from "@/components/magicui/confetti";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -15,6 +17,7 @@ export default function ContactForm() {
     e.preventDefault();
     if (!formData.name || !formData.email) return;
     setSubmitted(true);
+    fireCookingCelebration();
   };
 
   if (submitted) {
@@ -88,13 +91,15 @@ export default function ContactForm() {
         />
       </div>
 
-      <button
+      <ShimmerButton
         type="submit"
-        className="w-full inline-flex items-center justify-center gap-2 bg-brand-terracotta hover:bg-[#8e3920] text-white py-3.5 px-6 rounded-xl font-semibold transition-all shadow-xs hover:shadow text-sm"
+        background="#A9472A"
+        shimmerColor="#FFEAC9"
+        className="w-full py-3.5 px-6 font-semibold shadow-xs text-sm inline-flex items-center justify-center gap-2 text-white"
       >
         <SendIcon className="w-4 h-4" />
         <span>Send Message</span>
-      </button>
+      </ShimmerButton>
     </form>
   );
 }

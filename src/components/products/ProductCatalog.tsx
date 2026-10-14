@@ -14,6 +14,7 @@ import {
   UtensilsIcon,
   EmptyState,
 } from "@/components/ui";
+import { MotionCard } from "@/components/magicui/motion-landing";
 
 interface ProductCatalogProps {
   initialProducts: Product[];
@@ -135,7 +136,7 @@ export default function ProductCatalog({
         />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredProducts.map((product) => {
+          {filteredProducts.map((product, idx) => {
             const isChilliOrHot =
               product.slug.includes("chilli") ||
               product.slug.includes("pepper") ||
@@ -146,8 +147,10 @@ export default function ProductCatalog({
               product.slug.includes("podi");
 
             return (
-              <div
+              <MotionCard
                 key={product.id}
+                index={idx % 6}
+                direction="up"
                 className="flex flex-col bg-white rounded-xl border border-brand-sand/80 shadow-xs hover:shadow-md hover:border-brand-terracotta/40 transition-all overflow-hidden group"
               >
                 {/* Visual Header */}
@@ -212,7 +215,7 @@ export default function ProductCatalog({
                     </Link>
                   </div>
                 </div>
-              </div>
+              </MotionCard>
             );
           })}
         </div>

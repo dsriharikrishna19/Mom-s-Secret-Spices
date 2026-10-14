@@ -1,20 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { RECIPES } from "@/data/recipes";
 import { PRODUCTS } from "@/features/products/data";
-import { SITE_INFO } from "@/data/info";
-import {
-  Badge,
-  WhatsAppIcon,
-  ArrowRightIcon,
-  ChefHatIcon,
-  ClockIcon,
-  SparklesIcon,
-  UtensilsIcon,
-} from "@/components/ui";
+import { fireCookingCelebration } from "@/components/magicui/confetti";
+import { Badge, ClockIcon, UtensilsIcon } from "@/components/ui";
+import { CompanionConsole, CompanionStatus } from "./CompanionConsole";
+import { ProductSpotlightCard } from "./ProductSpotlightCard";
 
 // Dynamic import with SSR disabled for Three.js WebGL canvas
 const KitchenCanvas = dynamic(
@@ -35,10 +28,19 @@ const KitchenCanvas = dynamic(
   },
 );
 
+type AllowedSceneAction = "welcome" | "prepare" | "show_spice" | "cooking" | "complete";
+
 export default function CookingStudioExperience() {
   const [selectedRecipeIndex, setSelectedRecipeIndex] = useState(0);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
-  const [sceneState, setSceneState] = useState<string>("cooking");
+  const [sceneState, setSceneState] = useState<AllowedSceneAction>("cooking");
+  const [companionStatus, setCompanionStatus] = useState<CompanionStatus>("speaking");
+  const [isVoiceActive, setIsVoiceActive] = useState(false);
+  const [speechMuted, setSpeechMuted] = useState(false);
+  const [userQuery, setUserQuery] = useState("");
+  const [customReplies, setCustomReplies] = useState<
+    { role: "mom" | "user"; message: string }[]
+  >([]);
 
   const recipe = RECIPES[selectedRecipeIndex] || RECIPES[0];
   const step = recipe.steps[currentStepIndex] || recipe.steps[0];
@@ -48,25 +50,105 @@ export default function CookingStudioExperience() {
   const activeProductId = recipe.productSpotlights[0];
   const spotlightProduct = PRODUCTS.find((p) => p.id === activeProductId);
 
+  // Default initial message computed from props/state
+  const currentInitialMessage =
+    currentStepIndex === 0
+      ? `Namaste beta! Today we are preparing authentic ${recipe.name}. Notice the aroma of freshly roasted seeds first.`
+      : `For step ${currentStepIndex + 1}: ${step.title}. ${step.description}`;
+
+  // Combined transcript
+  const conversationHistory = [
+    { role: "mom" as const, message: currentInitialMessage },
+    ...customReplies,
+  ];
+
+  // Reset companion speaking timer when step changes
+  useEffect(() => {
+    const timer = setTimeout(() => setCompanionStatus("idle"), 3500);
+    return () => clearTimeout(timer);
+  }, [selectedRecipeIndex, currentStepIndex]);
+
+  // Validated Scene-Action Dispatcher
+  const dispatchSceneAction = (action: AllowedSceneAction) => {
+    const allowed: AllowedSceneAction[] = ["welcome", "prepare", "show_spice", "cooking", "complete"];
+    if (allowed.includes(action)) {
+      setSceneState(action);
+    }
+  };
+
   const handleNextStep = () => {
     if (!isLastStep) {
-      setCurrentStepIndex((prev) => prev + 1);
-      setSceneState(step.sceneAction || "cooking");
+      const nextIdx = currentStepIndex + 1;
+      setCurrentStepIndex(nextIdx);
+      const nextAction = (recipe.steps[nextIdx]?.sceneAction as AllowedSceneAction) || "show_spice";
+      dispatchSceneAction(nextAction);
+      setCompanionStatus("speaking");
     } else {
-      setSceneState("complete");
+      dispatchSceneAction("complete");
+      setCompanionStatus("celebrating");
+      fireCookingCelebration();
     }
   };
 
   const handlePrevStep = () => {
     if (currentStepIndex > 0) {
       setCurrentStepIndex((prev) => prev - 1);
-      setSceneState("cooking");
+      dispatchSceneAction("cooking");
+      setCompanionStatus("speaking");
     }
   };
 
   const handleRestart = () => {
     setCurrentStepIndex(0);
-    setSceneState("cooking");
+    dispatchSceneAction("welcome");
+    setCompanionStatus("speaking");
+  };
+
+  // Voice / Conversation interaction handler
+  const handleUserAsk = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!userQuery.trim()) return;
+
+    const query = userQuery.trim();
+    setCustomReplies((prev) => [...prev, { role: "user" as const, message: query }]);
+    setUserQuery("");
+    setCompanionStatus("thinking");
+
+    setTimeout(() => {
+      let momReply = `Beta, always keep the flame on medium to retain the volatile spice oils. ${step.description}`;
+      const lower = query.toLowerCase();
+
+      if (lower.includes("spice") || lower.includes("masala") || lower.includes("ingredient")) {
+        dispatchSceneAction("show_spice");
+        momReply = `I am using our authentic stone-ground ${spotlightProduct?.name || "special blend"}. Watch the 3D jar highlight in the rack!`;
+      } else if (lower.includes("next") || lower.includes("continue") || lower.includes("ready")) {
+        handleNextStep();
+        return;
+      } else if (lower.includes("repeat") || lower.includes("again") || lower.includes("what")) {
+        momReply = `Sure beta: ${step.description}`;
+      } else if (lower.includes("oil") || lower.includes("ghee") || lower.includes("heat")) {
+        dispatchSceneAction("cooking");
+        momReply = "Ensure the pure mustard oil or desi ghee smokes faintly before dropping the whole spices in.";
+      }
+
+      setCustomReplies((prev) => [...prev, { role: "mom", message: momReply }]);
+      setCompanionStatus("speaking");
+      setTimeout(() => setCompanionStatus("idle"), 4000);
+    }, 1200);
+  };
+
+  const toggleMic = () => {
+    if (!isVoiceActive) {
+      setIsVoiceActive(true);
+      setCompanionStatus("listening");
+      setTimeout(() => {
+        setIsVoiceActive(false);
+        setUserQuery("What spice should I add right now, Mom?");
+      }, 2500);
+    } else {
+      setIsVoiceActive(false);
+      setCompanionStatus("idle");
+    }
   };
 
   return (
@@ -84,7 +166,7 @@ export default function CookingStudioExperience() {
                 onClick={() => {
                   setSelectedRecipeIndex(idx);
                   setCurrentStepIndex(0);
-                  setSceneState("welcome");
+                  dispatchSceneAction("welcome");
                 }}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                   selectedRecipeIndex === idx
@@ -114,138 +196,37 @@ export default function CookingStudioExperience() {
         potSimmering={currentStepIndex >= 1}
       />
 
-      {/* Interactive Cooking Story Step Console (Flex Layout) */}
+      {/* Interactive Cooking Story Step Console & AI Companion */}
       <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 items-start w-full">
-        {/* Step Guide & Companion Prompt (Flex 1) */}
-        <div className="flex-1 w-full bg-white p-5 sm:p-8 rounded-xl border border-brand-sand shadow-xs flex flex-col gap-6 min-w-0">
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-brand-sand/80">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-brand-sand/70 flex items-center justify-center text-brand-terracotta border border-brand-sand shrink-0">
-                <ChefHatIcon className="w-5 h-5 text-brand-terracotta" />
-              </div>
-              <div className="min-w-0">
-                <h3 className="font-heading font-bold text-base text-brand-brown">
-                  Mom&apos;s Cooking Guide
-                </h3>
-                <span className="text-xs text-brand-brown/60">
-                  Step {currentStepIndex + 1} of {recipe.steps.length}
-                </span>
-              </div>
-            </div>
+        <CompanionConsole
+          currentStepIndex={currentStepIndex}
+          totalSteps={recipe.steps.length}
+          recipeName={recipe.name}
+          stepTitle={step.title}
+          stepDescription={step.description}
+          companionStatus={companionStatus}
+          speechMuted={speechMuted}
+          onToggleMute={() => setSpeechMuted(!speechMuted)}
+          conversationHistory={conversationHistory}
+          userQuery={userQuery}
+          setUserQuery={setUserQuery}
+          isVoiceActive={isVoiceActive}
+          onToggleMic={toggleMic}
+          onUserAsk={handleUserAsk}
+          onFocusSpice={() => dispatchSceneAction("show_spice")}
+          onPrevStep={handlePrevStep}
+          onNextStep={handleNextStep}
+          onRestart={() => {
+            handleRestart();
+            fireCookingCelebration();
+          }}
+          isLastStep={isLastStep}
+        />
 
-            {/* Progress indicators */}
-            <div className="flex gap-1.5">
-              {recipe.steps.map((_, idx) => (
-                <div
-                  key={idx}
-                  className={`h-2 rounded-full transition-all ${
-                    idx === currentStepIndex
-                      ? "w-6 bg-brand-terracotta"
-                      : idx < currentStepIndex
-                        ? "w-2.5 bg-brand-green"
-                        : "w-2.5 bg-brand-sand"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Current Step Instruction */}
-          <div className="flex flex-col gap-3">
-            <h2 className="font-heading text-xl sm:text-2xl font-bold text-brand-brown">
-              {step.title}
-            </h2>
-            <p className="text-sm sm:text-base text-brand-brown/85 leading-relaxed bg-brand-cream/60 p-4 rounded-xl border border-brand-sand/60">
-              &ldquo;{step.description}&rdquo;
-            </p>
-          </div>
-
-          {/* Step Actions */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-            <button
-              onClick={handlePrevStep}
-              disabled={currentStepIndex === 0}
-              className="px-4 py-2 text-xs font-semibold text-brand-brown bg-brand-sand/60 hover:bg-brand-sand rounded-xl disabled:opacity-30 disabled:pointer-events-none transition-all"
-            >
-              ← Previous Step
-            </button>
-
-            {isLastStep ? (
-              <button
-                onClick={handleRestart}
-                className="px-6 py-2.5 text-xs font-bold text-white bg-brand-green hover:bg-[#3d5739] rounded-xl shadow-xs transition-all"
-              >
-                ✓ Dish Completed! Cook Again ↺
-              </button>
-            ) : (
-              <button
-                onClick={handleNextStep}
-                className="inline-flex items-center gap-2 px-6 py-2.5 text-xs font-bold text-white bg-brand-terracotta hover:bg-[#8e3920] rounded-xl shadow-xs transition-all"
-              >
-                <span>Continue to Step {currentStepIndex + 2}</span>
-                <ArrowRightIcon className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* Product Spotlight & Reorder Card (Fixed Width Column on Desktop) */}
-        <div className="w-full lg:w-84 xl:w-96 shrink-0 bg-white p-5 sm:p-6 rounded-xl border border-brand-sand shadow-xs flex flex-col gap-4">
-          <Badge variant="gold" className="inline-flex items-center gap-1.5 self-start">
-            <SparklesIcon className="w-3.5 h-3.5 text-brand-terracotta" />
-            <span>Spotlight Spice Used</span>
-          </Badge>
-
-          {spotlightProduct ? (
-            <div className="flex flex-col gap-4">
-              <div className="aspect-square bg-linear-to-tr from-brand-sand/50 to-brand-cream rounded-xl flex flex-col items-center justify-center p-6 border border-brand-sand/60 gap-3">
-                <div className="w-14 h-14 rounded-xl bg-white/80 border border-brand-sand flex items-center justify-center text-brand-terracotta shadow-xs">
-                  <UtensilsIcon className="w-7 h-7 text-brand-terracotta" />
-                </div>
-                <div className="text-center">
-                  <span className="font-heading font-bold text-base text-brand-brown block">
-                    {spotlightProduct.name}
-                  </span>
-                  <span className="text-xs text-brand-brown/60 block mt-0.5">
-                    Freshly Stone-Ground
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-brand-brown/70">Pack MRP:</span>
-                <span className="font-heading font-bold text-brand-terracotta text-lg">
-                  ₹{spotlightProduct.packSizes[0]?.mrp}
-                </span>
-              </div>
-
-              <div className="flex flex-col gap-2 pt-2">
-                <Link
-                  href={`/products/${spotlightProduct.slug}`}
-                  className="w-full inline-flex items-center justify-center px-4 py-2.5 bg-brand-cream hover:bg-brand-sand text-brand-brown text-xs font-semibold rounded-xl border border-brand-sand transition-all text-center"
-                >
-                  View Spice Details
-                </Link>
-
-                <a
-                  href={`https://wa.me/${SITE_INFO.whatsappNumber}?text=${encodeURIComponent(
-                    `Hello Mom's Secret Spices! I am cooking ${recipe.name} in the studio and would like to order ${spotlightProduct.name}.`,
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-brand-terracotta hover:bg-[#8e3920] text-white text-xs font-semibold rounded-xl shadow-xs transition-all text-center"
-                >
-                  <WhatsAppIcon className="w-4 h-4" />
-                  <span>Order on WhatsApp</span>
-                </a>
-              </div>
-            </div>
-          ) : (
-            <p className="text-xs text-brand-brown/60">
-              Authentic Mom&apos;s Secret Spices are featured in this recipe.
-            </p>
-          )}
-        </div>
+        <ProductSpotlightCard
+          recipeName={recipe.name}
+          product={spotlightProduct}
+        />
       </div>
     </div>
   );

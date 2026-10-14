@@ -104,6 +104,24 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Grand Baahubali Style Title Banner */}
+        <div className="relative py-8 sm:py-12 border-t border-brand-cream/10 text-center overflow-hidden flex flex-col items-center justify-center">
+          <div className="flex items-center justify-center gap-3 w-full mb-3">
+            <span className="h-px bg-linear-to-r from-transparent via-brand-gold/40 to-transparent flex-1 max-w-xs" />
+            <span className="text-[10px] sm:text-xs font-heading tracking-[0.35em] uppercase text-brand-gold/80 font-bold">
+              Artisanal Heritage Since 1984
+            </span>
+            <span className="h-px bg-linear-to-r from-transparent via-brand-gold/40 to-transparent flex-1 max-w-xs" />
+          </div>
+
+          <h2 className="font-heading font-black text-2xl sm:text-2xl md:text-2xl uppercase tracking-[0.25em] text-transparent bg-clip-text bg-linear-to-r from-amber-200 via-brand-gold to-orange-400 drop-shadow-[0_4px_16px_rgba(217,119,6,0.35)] select-none">
+            MOM&apos;S SECRET SPICES
+          </h2>
+          <p className="text-[11px] sm:text-xs font-serif tracking-[0.2em] uppercase text-brand-cream/60 mt-1">
+            AKSHAYA FOODS • THE ROYAL ESSENCE OF INDIAN TRADITION
+          </p>
+        </div>
+
         {/* Bottom bar */}
         <div className="pt-6 border-t border-brand-cream/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-brand-cream/60">
           <p className="text-center sm:text-left">© 2026 Mom&apos;s Secret Spices. Handcrafted with love.</p>
