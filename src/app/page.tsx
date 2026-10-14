@@ -132,6 +132,7 @@ export default function HomePage() {
                 src="/spice-catalog-banner.jpg"
                 alt="Mom's Secret Spices 27 Hot Selling Products Showcase"
                 fill
+                sizes="(max-width: 1024px) 100vw, 576px"
                 className="object-contain group-hover:scale-102 transition-transform duration-500"
               />
             </div>

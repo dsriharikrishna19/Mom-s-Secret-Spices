@@ -66,7 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${sora.variable} h-full antialiased`}
+      className={`${inter.variable} ${sora.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-brand-cream text-brand-brown font-sans selection:bg-brand-gold/30 selection:text-brand-brown">
         <Header />

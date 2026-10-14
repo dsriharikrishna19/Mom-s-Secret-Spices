@@ -17,6 +17,7 @@ export default function Header() {
               src="/brand-logo.jpg"
               alt="Mom's Secret Spices - Akshaya Foods Logo"
               fill
+              sizes="48px"
               className="object-cover"
               priority
             />
