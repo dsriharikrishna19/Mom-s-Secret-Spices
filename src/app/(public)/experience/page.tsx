@@ -1,11 +1,11 @@
 import { Metadata } from "next";
-import CinematicPromptScene from "@/components/experience/CinematicPromptScene";
+import CinematicVideoExperience from "@/components/experience/CinematicVideoExperience";
 import { Badge, SparklesIcon } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "3D Cinematic Kitchen Scene | Mom's Secret Spices",
+  title: "3D Cinematic Kitchen Film | Mom's Secret Spices",
   description:
-    "Master 3D Cinematic AI Video Scene prompt and visual storyboard for Mom's Secret Spices heritage Indian kitchen.",
+    "Experience the sacred art of authentic Indian spice tempering in our 3D cinematic film.",
 };
 
 export default function ExperiencePage() {
@@ -14,18 +14,18 @@ export default function ExperiencePage() {
       <div className="text-center max-w-2xl mx-auto flex flex-col items-center gap-2.5">
         <Badge variant="gold" className="inline-flex items-center gap-1.5">
           <SparklesIcon className="w-3.5 h-3.5 text-brand-terracotta" />
-          <span>3D Cinematic Kitchen Vision</span>
+          <span>3D Cinematic Experience</span>
         </Badge>
         <h1 className="font-heading text-xl sm:text-2xl font-bold text-brand-brown">
           The Heritage Cooking Experience
         </h1>
         <p className="text-sm sm:text-base text-brand-brown/75 leading-relaxed">
-          Ultra-realistic 3D cinematic scene prompt capturing the sacred art of stone-ground tempering,
-          ready for Sora, Runway Gen-3, Kling AI, and Unreal Engine 5 production.
+          Witness the authentic stone-ground tempering craft in our 3D cinematic film,
+          showcasing the vibrant aroma and heritage of Indian home cooking.
         </p>
       </div>
 
-      <CinematicPromptScene />
+      <CinematicVideoExperience />
     </main>
   );
 }

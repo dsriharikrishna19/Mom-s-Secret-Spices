@@ -33,7 +33,7 @@ export const RECIPES: Recipe[] = [
         name: "Turmeric Powder",
         quantity: 1,
         unit: "tsp",
-        productId: "product_001",
+        productId: "prod_turmeric_powder",
         isFromMomSecrets: true,
       },
       {
@@ -68,7 +68,7 @@ export const RECIPES: Recipe[] = [
         animationKey: "final_presentation",
       },
     ],
-    productSpotlights: ["product_001"],
+    productSpotlights: ["prod_turmeric_powder"],
   },
 ];
 
