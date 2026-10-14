@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FlameIcon } from "@/components/ui/Icons";
 
 export default function Footer() {
   return (
@@ -8,7 +9,9 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="md:col-span-1 space-y-4">
             <div className="flex items-center gap-2">
-              <span className="text-2xl">🌶️</span>
+              <div className="w-8 h-8 rounded-lg bg-brand-gold/20 flex items-center justify-center text-brand-gold border border-brand-gold/30">
+                <FlameIcon className="w-4 h-4 text-brand-gold" />
+              </div>
               <span className="font-heading font-bold text-xl text-[#FFF8EE]">
                 Mom&apos;s Secret Spices
               </span>

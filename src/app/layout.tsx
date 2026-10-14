@@ -3,6 +3,7 @@ import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import PageTransitionWrapper from "@/components/layout/PageTransitionWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -66,13 +67,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${sora.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-brand-cream text-brand-brown font-sans selection:bg-brand-gold/30 selection:text-brand-brown">
         <Header />
-        <div className="flex-1 flex flex-col">
-          {children}
-        </div>
+        <PageTransitionWrapper>{children}</PageTransitionWrapper>
         <Footer />
       </body>
     </html>

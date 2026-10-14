@@ -3,10 +3,27 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { SparklesIcon, ChefHatIcon } from "@/components/ui/Icons";
+
+const NAV_ITEMS = [
+  { href: "/", label: "Home" },
+  { href: "/products", label: "Spices & Blends" },
+  { href: "/experience", label: "Cooking Studio", icon: ChefHatIcon },
+  { href: "/about", label: "Our Heritage" },
+  { href: "/contact", label: "Contact" },
+];
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isLinkActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname.startsWith(href);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-[#FFF8EE]/92 backdrop-blur-md border-b border-[#F0E2CF]">
@@ -33,38 +50,35 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          <Link
-            href="/"
-            className="text-sm font-medium text-brand-brown/80 hover:text-brand-terracotta transition-colors"
-          >
-            Home
-          </Link>
-          <Link
-            href="/products"
-            className="text-sm font-medium text-brand-brown/80 hover:text-brand-terracotta transition-colors"
-          >
-            Spices & Blends
-          </Link>
-          <Link
-            href="/experience"
-            className="text-sm font-medium text-brand-brown/80 hover:text-brand-terracotta transition-colors flex items-center gap-1.5"
-          >
-            <ChefHatIcon className="w-4 h-4 text-brand-terracotta" />
-            <span>Cooking Studio</span>
-          </Link>
-          <Link
-            href="/about"
-            className="text-sm font-medium text-brand-brown/80 hover:text-brand-terracotta transition-colors"
-          >
-            Our Heritage
-          </Link>
-          <Link
-            href="/contact"
-            className="text-sm font-medium text-brand-brown/80 hover:text-brand-terracotta transition-colors"
-          >
-            Contact
-          </Link>
+        <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+          {NAV_ITEMS.map((item) => {
+            const active = isLinkActive(item.href);
+            const Icon = item.icon;
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`relative px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-1.5 ${
+                  active
+                    ? "text-brand-terracotta bg-brand-sand/40 shadow-2xs font-bold"
+                    : "text-brand-brown/75 hover:text-brand-terracotta hover:bg-brand-sand/20"
+                }`}
+              >
+                {Icon && (
+                  <Icon
+                    className={`w-4 h-4 ${
+                      active ? "text-brand-terracotta" : "text-brand-brown/60"
+                    }`}
+                  />
+                )}
+                <span>{item.label}</span>
+                {active && (
+                  <span className="absolute bottom-0 left-3.5 right-3.5 h-0.5 bg-brand-terracotta rounded-full" />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* CTA Button & Mobile Toggle */}
@@ -112,42 +126,33 @@ export default function Header() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-brand-cream border-b border-brand-sand px-4 pt-3 pb-6 space-y-3">
-          <Link
-            href="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-medium text-brand-brown hover:bg-white"
-          >
-            Home
-          </Link>
-          <Link
-            href="/products"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-medium text-brand-brown hover:bg-white"
-          >
-            Spices & Blends
-          </Link>
-          <Link
-            href="/experience"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-medium text-brand-brown hover:bg-white"
-          >
-            Cooking Studio
-          </Link>
-          <Link
-            href="/about"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-medium text-brand-brown hover:bg-white"
-          >
-            Our Heritage
-          </Link>
-          <Link
-            href="/contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-medium text-brand-brown hover:bg-white"
-          >
-            Contact
-          </Link>
+        <div className="md:hidden bg-brand-cream border-b border-brand-sand px-4 pt-3 pb-6 space-y-2">
+          {NAV_ITEMS.map((item) => {
+            const active = isLinkActive(item.href);
+            const Icon = item.icon;
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                  active
+                    ? "bg-brand-sand text-brand-terracotta font-bold"
+                    : "text-brand-brown hover:bg-white/80"
+                }`}
+              >
+                {Icon && (
+                  <Icon
+                    className={`w-4 h-4 ${
+                      active ? "text-brand-terracotta" : "text-brand-brown/60"
+                    }`}
+                  />
+                )}
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
         </div>
       )}
     </header>

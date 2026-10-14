@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { FlameIcon } from "@/components/ui/Icons";
 
 interface KitchenCanvasProps {
   sceneState: string;
@@ -279,8 +280,9 @@ export default function KitchenCanvas({
 
       {/* Active Spice Particle Indicator */}
       {activeSpice && (
-        <div className="absolute bottom-4 right-4 z-10 px-3.5 py-1.5 rounded-xl bg-brand-brown/90 text-white backdrop-blur-md border border-brand-gold/40 text-xs font-medium shadow-md">
-          🌶️ Tempering: <span className="font-bold text-brand-gold">{activeSpice}</span>
+        <div className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-brand-brown/90 text-white backdrop-blur-md border border-brand-gold/40 text-xs font-medium shadow-md">
+          <FlameIcon className="w-3.5 h-3.5 text-brand-gold" />
+          <span>Tempering: <span className="font-bold text-brand-gold">{activeSpice}</span></span>
         </div>
       )}
     </div>

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { SparklesIcon, FlameIcon, ChefHatIcon, HomeIcon } from "@/components/ui/Icons";
 
 export const metadata: Metadata = {
   title: "Home | Mom's Secret Spices",
@@ -18,7 +19,7 @@ export default function HomePage() {
         <div className="relative max-w-4xl mx-auto text-center space-y-8">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-sand/60 border border-brand-sand text-brand-brown text-xs sm:text-sm font-medium shadow-xs">
-            <span className="text-brand-terracotta">✨</span>
+            <SparklesIcon className="w-4 h-4 text-brand-terracotta" />
             <span>Artisanal Small-Batch Spices & Interactive Kitchen</span>
           </div>
 
@@ -55,8 +56,8 @@ export default function HomePage() {
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 text-left">
             <div className="p-6 rounded-2xl bg-white/70 backdrop-blur-sm border border-brand-sand shadow-xs hover:border-brand-terracotta/30 transition-all space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-brand-cream flex items-center justify-center text-2xl border border-brand-sand">
-                🌶️
+              <div className="w-12 h-12 rounded-xl bg-brand-cream flex items-center justify-center text-brand-terracotta border border-brand-sand">
+                <FlameIcon className="w-6 h-6 text-brand-terracotta" />
               </div>
               <h3 className="font-heading font-semibold text-lg text-brand-brown">
                 Premium Quality
@@ -67,8 +68,8 @@ export default function HomePage() {
             </div>
 
             <div className="p-6 rounded-2xl bg-white/70 backdrop-blur-sm border border-brand-sand shadow-xs hover:border-brand-terracotta/30 transition-all space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-brand-cream flex items-center justify-center text-2xl border border-brand-sand">
-                👨‍🍳
+              <div className="w-12 h-12 rounded-xl bg-brand-cream flex items-center justify-center text-brand-terracotta border border-brand-sand">
+                <ChefHatIcon className="w-6 h-6 text-brand-terracotta" />
               </div>
               <h3 className="font-heading font-semibold text-lg text-brand-brown">
                 AI Companion
@@ -79,8 +80,8 @@ export default function HomePage() {
             </div>
 
             <div className="p-6 rounded-2xl bg-white/70 backdrop-blur-sm border border-brand-sand shadow-xs hover:border-brand-terracotta/30 transition-all space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-brand-cream flex items-center justify-center text-2xl border border-brand-sand">
-                🏡
+              <div className="w-12 h-12 rounded-xl bg-brand-cream flex items-center justify-center text-brand-green border border-brand-sand">
+                <HomeIcon className="w-6 h-6 text-brand-green" />
               </div>
               <h3 className="font-heading font-semibold text-lg text-brand-brown">
                 Authentic Experience
@@ -132,6 +133,7 @@ export default function HomePage() {
                 src="/spice-catalog-banner.jpg"
                 alt="Mom's Secret Spices 27 Hot Selling Products Showcase"
                 fill
+                priority
                 sizes="(max-width: 1024px) 100vw, 576px"
                 className="object-contain group-hover:scale-102 transition-transform duration-500"
               />

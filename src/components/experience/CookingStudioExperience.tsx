@@ -5,7 +5,15 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { RECIPES } from "@/data/recipes";
 import { PRODUCTS } from "@/features/products/data";
-import { Badge, WhatsAppIcon, ArrowRightIcon } from "@/components/ui";
+import {
+  Badge,
+  WhatsAppIcon,
+  ArrowRightIcon,
+  ChefHatIcon,
+  ClockIcon,
+  SparklesIcon,
+  UtensilsIcon,
+} from "@/components/ui";
 
 // Dynamic import with SSR disabled for Three.js WebGL canvas
 const KitchenCanvas = dynamic(
@@ -89,8 +97,9 @@ export default function CookingStudioExperience() {
           </div>
         </div>
 
-        <Badge variant="green">
-          ⏱️ Prep: {recipe.prepTime}m • Cook: {recipe.cookTime}m
+        <Badge variant="green" className="inline-flex items-center gap-1.5">
+          <ClockIcon className="w-3.5 h-3.5" />
+          <span>Prep: {recipe.prepTime}m • Cook: {recipe.cookTime}m</span>
         </Badge>
       </div>
 
@@ -108,8 +117,8 @@ export default function CookingStudioExperience() {
         <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-3xl border border-brand-sand shadow-xs space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-brand-sand/80">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-brand-sand flex items-center justify-center text-xl">
-                👩🏽‍🍳
+              <div className="w-10 h-10 rounded-full bg-brand-sand/70 flex items-center justify-center text-brand-terracotta border border-brand-sand">
+                <ChefHatIcon className="w-5 h-5 text-brand-terracotta" />
               </div>
               <div>
                 <h3 className="font-heading font-bold text-base text-brand-brown">
@@ -179,14 +188,17 @@ export default function CookingStudioExperience() {
 
         {/* Product Spotlight & Reorder Card */}
         <div className="lg:col-span-4 bg-white p-6 rounded-3xl border border-brand-sand shadow-xs space-y-4">
-          <Badge variant="gold">🏺 Spotlight Spice Used</Badge>
+          <Badge variant="gold" className="inline-flex items-center gap-1.5">
+            <SparklesIcon className="w-3.5 h-3.5 text-brand-terracotta" />
+            <span>Spotlight Spice Used</span>
+          </Badge>
 
           {spotlightProduct ? (
             <div className="space-y-4">
               <div className="aspect-square bg-gradient-to-tr from-brand-sand/50 to-brand-cream rounded-2xl flex flex-col items-center justify-center p-6 border border-brand-sand/60">
-                <span className="text-6xl mb-2">
-                  {spotlightProduct.slug.includes("turmeric") ? "🟡" : "🏺"}
-                </span>
+                <div className="w-16 h-16 rounded-2xl bg-white/80 border border-brand-sand flex items-center justify-center text-brand-terracotta mb-3 shadow-xs">
+                  <UtensilsIcon className="w-8 h-8 text-brand-terracotta" />
+                </div>
                 <span className="font-heading font-bold text-base text-brand-brown text-center">
                   {spotlightProduct.name}
                 </span>

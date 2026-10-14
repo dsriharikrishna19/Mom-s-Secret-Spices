@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import CookingStudioExperience from "@/components/experience/CookingStudioExperience";
-import { Badge } from "@/components/ui";
+import { Badge, SparklesIcon } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Cooking Studio Experience | Mom's Secret Spices",
@@ -12,7 +12,10 @@ export default function ExperiencePage() {
   return (
     <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
       <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
-        <Badge variant="gold">✨ Interactive 3D Kitchen Studio</Badge>
+        <Badge variant="gold" className="inline-flex items-center gap-1.5">
+          <SparklesIcon className="w-3.5 h-3.5 text-brand-terracotta" />
+          <span>Interactive 3D Kitchen Studio</span>
+        </Badge>
         <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-brand-brown">
           Immersive Cooking Experience
         </h1>

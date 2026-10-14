@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { MailIcon, SendIcon } from "@/components/ui/Icons";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -15,7 +16,9 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div className="bg-brand-cream/80 border border-brand-sand p-6 rounded-2xl text-center space-y-3">
-        <span className="text-3xl block">💌</span>
+        <div className="w-12 h-12 rounded-full bg-brand-sand/60 border border-brand-sand flex items-center justify-center text-brand-terracotta mx-auto">
+          <MailIcon className="w-6 h-6 text-brand-terracotta" />
+        </div>
         <h4 className="font-heading font-bold text-brand-brown text-lg">
           Thank you, {formData.name}!
         </h4>

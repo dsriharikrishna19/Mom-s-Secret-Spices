@@ -1,7 +1,16 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getProductBySlug, getAllProducts } from "@/features/products";
-import { Badge, CheckIcon, ArrowLeftIcon, WhatsAppIcon } from "@/components/ui";
+import {
+  Badge,
+  CheckIcon,
+  ArrowLeftIcon,
+  WhatsAppIcon,
+  FlameIcon,
+  LeafIcon,
+  UtensilsIcon,
+  EmptyState,
+} from "@/components/ui";
 
 interface ProductPageProps {
   params: Promise<{
@@ -43,31 +52,19 @@ export default async function ProductDetailPage({
   if (!product) {
     return (
       <main className="flex-1 flex items-center justify-center px-4 py-20">
-        <div className="max-w-md w-full text-center bg-white p-8 rounded-3xl border border-brand-sand shadow-xs">
-          <span className="text-4xl mb-4 block">🔍</span>
-          <h1 className="font-heading text-2xl font-bold text-brand-brown mb-2">
-            Product Not Found
-          </h1>
-          <p className="text-sm text-brand-brown/70 mb-6">
-            We couldn&apos;t locate the spice blend you were looking for.
-          </p>
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-terracotta text-white font-medium rounded-xl hover:bg-[#8e3920] transition-colors text-sm"
-          >
-            <ArrowLeftIcon className="w-4 h-4" />
-            <span>Back to All Spices</span>
-          </Link>
-        </div>
+        <EmptyState
+          title="Spice Blend Not Found"
+          description="We couldn't locate the artisanal spice blend you were looking for. Browse our full catalog to explore our current batches."
+          actionLabel="Browse All Spices"
+          onAction={undefined}
+        />
       </main>
     );
   }
+          
 
-  const emoji = product.slug.includes("turmeric")
-    ? "🟡"
-    : product.slug.includes("garam")
-    ? "🏺"
-    : "🌿";
+  const isChilliOrHot = product.slug.includes("chilli") || product.slug.includes("pepper") || product.slug.includes("garam");
+  const isHerbalOrLeafy = product.slug.includes("coriander") || product.slug.includes("kasuri") || product.slug.includes("podi");
 
   const whatsappNumber =
     process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919876543210";
@@ -90,8 +87,14 @@ export default async function ProductDetailPage({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         {/* Left Column: Visual Showcase */}
         <div className="bg-white p-8 sm:p-12 rounded-3xl border border-brand-sand shadow-xs flex flex-col items-center justify-center text-center">
-          <div className="w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-gradient-to-tr from-brand-sand/60 to-brand-cream flex items-center justify-center text-7xl sm:text-8xl shadow-inner border border-brand-sand">
-            {emoji}
+          <div className="w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-gradient-to-tr from-brand-sand/60 to-brand-cream flex items-center justify-center shadow-inner border border-brand-sand">
+            {isChilliOrHot ? (
+              <FlameIcon className="w-24 h-24 sm:w-28 sm:h-28 text-brand-terracotta" />
+            ) : isHerbalOrLeafy ? (
+              <LeafIcon className="w-24 h-24 sm:w-28 sm:h-28 text-brand-green" />
+            ) : (
+              <UtensilsIcon className="w-24 h-24 sm:w-28 sm:h-28 text-brand-gold" />
+            )}
           </div>
           <div className="mt-8 flex flex-wrap gap-2 justify-center">
             <Badge variant="green">

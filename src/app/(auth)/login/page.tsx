@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { UtensilsIcon, SparklesIcon } from "@/components/ui/Icons";
 
 export default function LoginPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -15,7 +16,9 @@ export default function LoginPage() {
     <main className="flex-1 flex items-center justify-center px-4 py-16 sm:py-24">
       <div className="w-full max-w-md bg-white rounded-3xl p-8 border border-brand-sand shadow-xs space-y-6">
         <div className="text-center space-y-2">
-          <span className="text-4xl block">🏺</span>
+          <div className="w-14 h-14 rounded-2xl bg-brand-cream border border-brand-sand flex items-center justify-center text-brand-terracotta mx-auto mb-2">
+            <UtensilsIcon className="w-7 h-7 text-brand-terracotta" />
+          </div>
           <h1 className="font-heading text-2xl font-bold text-brand-brown">
             Welcome Back
           </h1>
@@ -26,7 +29,9 @@ export default function LoginPage() {
 
         {submitted ? (
           <div className="bg-brand-cream/80 p-6 rounded-2xl border border-brand-sand text-center space-y-3">
-            <span className="text-2xl block">✨</span>
+            <div className="w-10 h-10 rounded-full bg-brand-sand/60 flex items-center justify-center text-brand-terracotta mx-auto">
+              <SparklesIcon className="w-5 h-5 text-brand-terracotta" />
+            </div>
             <p className="text-sm font-semibold text-brand-brown">
               Welcome to the Mom&apos;s Secret Spices kitchen!
             </p>

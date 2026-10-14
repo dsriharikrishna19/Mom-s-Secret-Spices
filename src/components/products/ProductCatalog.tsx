@@ -3,7 +3,17 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Product } from "@/features/products/types";
-import { SearchIcon, FilterIcon, ArrowRightIcon, Badge } from "@/components/ui";
+import { useDebounce } from "@/hooks";
+import {
+  SearchIcon,
+  FilterIcon,
+  ArrowRightIcon,
+  Badge,
+  LeafIcon,
+  FlameIcon,
+  UtensilsIcon,
+  EmptyState,
+} from "@/components/ui";
 
 interface ProductCatalogProps {
   initialProducts: Product[];
@@ -14,19 +24,25 @@ export default function ProductCatalog({ initialProducts }: ProductCatalogProps)
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [sortBy, setSortBy] = useState<"name" | "price-asc" | "price-desc">("name");
 
+  // Debounced search query via custom hook
+  const debouncedSearch = useDebounce(searchQuery, 300);
+
   const categories = useMemo(() => {
     const cats = new Set(initialProducts.map((p) => p.category));
     return ["all", ...Array.from(cats)];
   }, [initialProducts]);
 
   const filteredProducts = useMemo(() => {
+    const query = debouncedSearch.trim().toLowerCase();
+
     return initialProducts
       .filter((product) => {
         const matchesSearch =
-          product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          !query ||
+          product.name.toLowerCase().includes(query) ||
+          product.description.toLowerCase().includes(query) ||
           product.ingredients.some((ing) =>
-            ing.toLowerCase().includes(searchQuery.toLowerCase())
+            ing.toLowerCase().includes(query)
           );
         const matchesCategory =
           selectedCategory === "all" || product.category === selectedCategory;
@@ -42,7 +58,7 @@ export default function ProductCatalog({ initialProducts }: ProductCatalogProps)
         if (sortBy === "price-desc") return priceB - priceA;
         return 0;
       });
-  }, [initialProducts, searchQuery, selectedCategory, sortBy]);
+  }, [initialProducts, debouncedSearch, selectedCategory, sortBy]);
 
   return (
     <div className="space-y-8">
@@ -105,32 +121,20 @@ export default function ProductCatalog({ initialProducts }: ProductCatalogProps)
 
       {/* Grid or Empty State */}
       {filteredProducts.length === 0 ? (
-        <div className="bg-white rounded-3xl p-12 text-center border border-brand-sand shadow-xs space-y-4">
-          <span className="text-4xl block">🔍</span>
-          <h3 className="font-heading text-lg font-bold text-brand-brown">
-            No spices matched your search
-          </h3>
-          <p className="text-sm text-brand-brown/70 max-w-md mx-auto">
-            Try adjusting your search keywords or clear the category filter to see the complete Mom&apos;s Secret Spices collection.
-          </p>
-          <button
-            onClick={() => {
-              setSearchQuery("");
-              setSelectedCategory("all");
-            }}
-            className="px-4 py-2 bg-brand-terracotta text-white text-xs font-semibold rounded-lg hover:bg-[#8e3920] transition-colors"
-          >
-            Reset Filters
-          </button>
-        </div>
+        <EmptyState
+          title="No spices matched your search"
+          description="Try adjusting your search keywords or clear the category filter to see the complete Mom's Secret Spices collection."
+          actionLabel="Reset Filters"
+          onAction={() => {
+            setSearchQuery("");
+            setSelectedCategory("all");
+          }}
+        />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map((product) => {
-            const emoji = product.slug.includes("turmeric")
-              ? "🟡"
-              : product.slug.includes("garam")
-              ? "🏺"
-              : "🌿";
+            const isChilliOrHot = product.slug.includes("chilli") || product.slug.includes("pepper") || product.slug.includes("garam");
+            const isHerbalOrLeafy = product.slug.includes("coriander") || product.slug.includes("kasuri") || product.slug.includes("podi");
 
             return (
               <div
@@ -139,9 +143,15 @@ export default function ProductCatalog({ initialProducts }: ProductCatalogProps)
               >
                 {/* Visual Header */}
                 <div className="aspect-4/3 bg-gradient-to-br from-brand-sand/40 to-brand-cream flex flex-col items-center justify-center p-6 border-b border-brand-sand/50 relative">
-                  <span className="text-5xl group-hover:scale-110 transition-transform duration-300">
-                    {emoji}
-                  </span>
+                  <div className="w-16 h-16 rounded-2xl bg-white/80 border border-brand-sand shadow-xs flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    {isChilliOrHot ? (
+                      <FlameIcon className="w-8 h-8 text-brand-terracotta" />
+                    ) : isHerbalOrLeafy ? (
+                      <LeafIcon className="w-8 h-8 text-brand-green" />
+                    ) : (
+                      <UtensilsIcon className="w-8 h-8 text-brand-gold" />
+                    )}
+                  </div>
                   <div className="mt-3 flex gap-2">
                     <Badge variant="terracotta">
                       {product.packSizes[0]?.weight}

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { UtensilsIcon, LeafIcon, SparklesIcon, CheckIcon } from "@/components/ui/Icons";
 
 export const metadata: Metadata = {
   title: "About Us | Mom's Secret Spices",
@@ -10,8 +11,9 @@ export default function AboutPage() {
   return (
     <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       <div className="mb-12 text-center max-w-2xl mx-auto space-y-3">
-        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-brand-gold/15 text-brand-brown border border-brand-gold/30">
-          Our Heritage
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-gold/15 text-brand-brown border border-brand-gold/30">
+          <SparklesIcon className="w-3.5 h-3.5 text-brand-terracotta" />
+          <span>Our Heritage</span>
         </span>
         <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-brand-brown">
           The Secret in Every Spoon
@@ -25,7 +27,10 @@ export default function AboutPage() {
         {/* Story Section */}
         <section className="bg-white p-8 rounded-3xl border border-brand-sand shadow-xs space-y-4">
           <h2 className="font-heading text-2xl font-bold text-brand-brown flex items-center gap-3">
-            <span className="text-brand-terracotta">🏺</span> Our Story
+            <div className="w-8 h-8 rounded-lg bg-brand-cream border border-brand-sand flex items-center justify-center text-brand-terracotta">
+              <UtensilsIcon className="w-4 h-4 text-brand-terracotta" />
+            </div>
+            <span>Our Story</span>
           </h2>
           <p className="text-brand-brown/80 leading-relaxed">
             Mom&apos;s Secret Spices was born from the timeless memory of a warm home kitchen, where every dish began with hand-selected seeds, roasted to gentle perfection, and freshly crushed with a stone mortar.
@@ -38,7 +43,10 @@ export default function AboutPage() {
         {/* Mission Section */}
         <section className="bg-white p-8 rounded-3xl border border-brand-sand shadow-xs space-y-4">
           <h2 className="font-heading text-2xl font-bold text-brand-brown flex items-center gap-3">
-            <span className="text-brand-gold">🌿</span> Our Mission
+            <div className="w-8 h-8 rounded-lg bg-brand-cream border border-brand-sand flex items-center justify-center text-brand-green">
+              <LeafIcon className="w-4 h-4 text-brand-green" />
+            </div>
+            <span>Our Mission</span>
           </h2>
           <p className="text-brand-brown/80 leading-relaxed">
             Our mission is twofold: preserve sacred heirloom spice formulations, and bring joyful, intuitive cooking confidence to every kitchen through authentic ingredients and our interactive AI culinary guide.
@@ -51,8 +59,10 @@ export default function AboutPage() {
             Our Purity Commitment
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="flex items-start gap-3 p-4 bg-white/80 rounded-xl border border-brand-sand/60">
-              <span className="text-brand-green font-bold text-lg leading-none">✓</span>
+            <div className="flex items-start gap-3 p-4 bg-white/80 rounded-xl border border-brand-sand/60 hover:shadow-xs hover:border-brand-terracotta/40 hover:-translate-y-0.5 transition-all">
+              <div className="w-5 h-5 rounded-full bg-brand-green/15 flex items-center justify-center text-brand-green shrink-0 mt-0.5">
+                <CheckIcon className="w-3.5 h-3.5 text-brand-green" />
+              </div>
               <div>
                 <h4 className="font-heading font-semibold text-sm text-brand-brown">
                   100% Single-Origin Sourcing
@@ -63,8 +73,10 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-4 bg-white/80 rounded-xl border border-brand-sand/60">
-              <span className="text-brand-green font-bold text-lg leading-none">✓</span>
+            <div className="flex items-start gap-3 p-4 bg-white/80 rounded-xl border border-brand-sand/60 hover:shadow-xs hover:border-brand-terracotta/40 hover:-translate-y-0.5 transition-all">
+              <div className="w-5 h-5 rounded-full bg-brand-green/15 flex items-center justify-center text-brand-green shrink-0 mt-0.5">
+                <CheckIcon className="w-3.5 h-3.5 text-brand-green" />
+              </div>
               <div>
                 <h4 className="font-heading font-semibold text-sm text-brand-brown">
                   Traditional Slow Stone-Grinding
@@ -75,8 +87,10 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-4 bg-white/80 rounded-xl border border-brand-sand/60">
-              <span className="text-brand-green font-bold text-lg leading-none">✓</span>
+            <div className="flex items-start gap-3 p-4 bg-white/80 rounded-xl border border-brand-sand/60 hover:shadow-xs hover:border-brand-terracotta/40 hover:-translate-y-0.5 transition-all">
+              <div className="w-5 h-5 rounded-full bg-brand-green/15 flex items-center justify-center text-brand-green shrink-0 mt-0.5">
+                <CheckIcon className="w-3.5 h-3.5 text-brand-green" />
+              </div>
               <div>
                 <h4 className="font-heading font-semibold text-sm text-brand-brown">
                   No Fillers or Additives
@@ -87,8 +101,10 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-4 bg-white/80 rounded-xl border border-brand-sand/60">
-              <span className="text-brand-green font-bold text-lg leading-none">✓</span>
+            <div className="flex items-start gap-3 p-4 bg-white/80 rounded-xl border border-brand-sand/60 hover:shadow-xs hover:border-brand-terracotta/40 hover:-translate-y-0.5 transition-all">
+              <div className="w-5 h-5 rounded-full bg-brand-green/15 flex items-center justify-center text-brand-green shrink-0 mt-0.5">
+                <CheckIcon className="w-3.5 h-3.5 text-brand-green" />
+              </div>
               <div>
                 <h4 className="font-heading font-semibold text-sm text-brand-brown">
                   Fresh Small Batches
