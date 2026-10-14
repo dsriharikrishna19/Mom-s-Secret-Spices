@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageTransitionWrapper from "@/components/layout/PageTransitionWrapper";
+import { SITE_INFO } from "@/data/info";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,8 +18,7 @@ const sora = Sora({
   display: "swap",
 });
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://momssecretspices.com";
+const baseUrl = SITE_INFO.siteUrl;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

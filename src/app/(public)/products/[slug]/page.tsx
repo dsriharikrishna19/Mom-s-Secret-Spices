@@ -11,6 +11,7 @@ import {
   UtensilsIcon,
   EmptyState,
 } from "@/components/ui";
+import { SITE_INFO } from "@/data/info";
 
 interface ProductPageProps {
   params: Promise<{
@@ -69,8 +70,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     product.slug.includes("kasuri") ||
     product.slug.includes("podi");
 
-  const whatsappNumber =
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919876543210";
+  const whatsappNumber = SITE_INFO.whatsappNumber;
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     `Hello! I would like to order Mom's Secret Spices: ${product.name} (${product.packSizes[0]?.weight}${product.packSizes[0]?.unit} pack).`,
   )}`;

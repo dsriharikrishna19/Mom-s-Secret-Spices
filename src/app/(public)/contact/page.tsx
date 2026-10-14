@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import ContactForm from "@/components/shared/ContactForm";
+import { SITE_INFO } from "@/data/info";
 
 export const metadata: Metadata = {
   title: "Contact Us | Mom's Secret Spices",
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const email = process.env.NEXT_PUBLIC_EMAIL || "contact@momssecretspices.com";
-  const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919876543210";
+  const email = SITE_INFO.email;
+  const whatsapp = SITE_INFO.whatsappNumber;
 
   return (
     <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex flex-col gap-8 md:gap-10">

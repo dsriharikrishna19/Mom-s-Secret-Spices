@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 flex flex-col gap-8 sm:gap-10">
-      <div className="text-center max-w-2xl mx-auto flex flex-col items-center gap-3">
+    <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex flex-col gap-6 sm:gap-8">
+      <div className="text-center max-w-2xl mx-auto flex flex-col items-center gap-2.5">
         <Badge variant="gold" className="inline-flex items-center gap-1.5">
           <SparklesIcon className="w-3.5 h-3.5 text-brand-terracotta" />
           <span>Interactive 3D Kitchen Studio</span>

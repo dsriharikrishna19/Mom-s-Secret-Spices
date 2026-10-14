@@ -17,12 +17,24 @@ import {
   UtensilsCrossed,
   Layers,
   Award,
+  Compass,
+  ShieldCheck,
 } from "lucide-react";
 
 export interface IconsProps {
   className?: string;
   size?: number;
 }
+
+export const CompassIcon = ({
+  className = "w-4 h-4",
+  size = 16,
+}: IconsProps) => <Compass className={className} size={size} />;
+
+export const ShieldCheckIcon = ({
+  className = "w-4 h-4",
+  size = 16,
+}: IconsProps) => <ShieldCheck className={className} size={size} strokeWidth={2} />;
 
 // Brand Lucide Icons
 export const SparklesIcon = ({

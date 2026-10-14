@@ -4,6 +4,7 @@
 
 import { Product, ProductFilters } from "./types";
 import { PRODUCTS } from "./data";
+import { SITE_INFO } from "@/data/info";
 
 /**
  * Filter and sort products based on criteria
@@ -83,9 +84,7 @@ export function getWhatsAppEnquiryUrl(
   message += ". Could you provide more details?";
 
   const encoded = encodeURIComponent(message);
-  // TODO: Replace with actual WhatsApp number from business
-  const WHATSAPP_NUMBER =
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "91xxxxxxxxxx";
+  const WHATSAPP_NUMBER = SITE_INFO.whatsappNumber;
 
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
 }
@@ -101,8 +100,7 @@ export function getEmailEnquiry(productName: string, packSize?: string) {
     }.\n\nCould you provide more information?\n\nThanks`,
   );
 
-  // TODO: Replace with actual email from business
-  const EMAIL = process.env.NEXT_PUBLIC_EMAIL || "contact@momssecretspices.com";
+  const EMAIL = SITE_INFO.email;
 
   return {
     mailto: `mailto:${EMAIL}?subject=${subject}&body=${body}`,

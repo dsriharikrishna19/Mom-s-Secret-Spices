@@ -55,8 +55,8 @@ export default function KitchenCanvas({
       0.1,
       100,
     );
-    camera.position.set(0, 3.5, 7.5);
-    camera.lookAt(0, 0.8, 0);
+    camera.position.set(0, 3.2, 5.8);
+    camera.lookAt(0, 0.7, 0);
 
     // Warm Ambient and Directional Kitchen Light
     const ambientLight = new THREE.AmbientLight("#FFEAC9", 0.9);
@@ -256,7 +256,7 @@ export default function KitchenCanvas({
 
   if (webglError) {
     return (
-      <div className="w-full aspect-16/9 bg-linear-to-br from-brand-sand/50 via-brand-cream to-brand-sand/40 rounded-xl border border-brand-sand flex flex-col items-center justify-center p-6 sm:p-8 text-center gap-2">
+      <div className="w-full max-w-7xl mx-auto aspect-16/9 bg-linear-to-br from-brand-sand/50 via-brand-cream to-brand-sand/40 rounded-xl border border-brand-sand flex flex-col items-center justify-center p-6 sm:p-8 text-center gap-2">
         <div className="w-12 h-12 rounded-xl bg-white/80 border border-brand-sand flex items-center justify-center text-brand-terracotta shadow-xs">
           <FlameIcon className="w-6 h-6 text-brand-terracotta" />
         </div>
@@ -272,7 +272,7 @@ export default function KitchenCanvas({
   }
 
   return (
-    <div className="relative w-full aspect-16/9 rounded-xl overflow-hidden border border-brand-sand/80 shadow-inner bg-brand-cream max-w-full">
+    <div className="relative w-full aspect-16/9 md:aspect-21/9 rounded-xl overflow-hidden border border-brand-sand/80 shadow-inner bg-brand-cream">
       <div ref={mountRef} className="w-full h-full" />
 
       {/* Floating Status Badge Overlay */}

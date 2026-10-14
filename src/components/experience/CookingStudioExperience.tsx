@@ -5,6 +5,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { RECIPES } from "@/data/recipes";
 import { PRODUCTS } from "@/features/products/data";
+import { SITE_INFO } from "@/data/info";
 import {
   Badge,
   WhatsAppIcon,
@@ -69,7 +70,7 @@ export default function CookingStudioExperience() {
   };
 
   return (
-    <div className="flex flex-col gap-8 sm:gap-10">
+    <div className="w-full max-w-7xl mx-auto flex flex-col gap-8 sm:gap-10">
       {/* Recipe Selection Tabs */}
       <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-xl border border-brand-sand shadow-xs">
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
@@ -113,10 +114,10 @@ export default function CookingStudioExperience() {
         potSimmering={currentStepIndex >= 1}
       />
 
-      {/* Interactive Cooking Story Step Console */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
-        {/* Step Guide & Companion Prompt */}
-        <div className="lg:col-span-8 bg-white p-5 sm:p-8 rounded-xl border border-brand-sand shadow-xs flex flex-col gap-6">
+      {/* Interactive Cooking Story Step Console (Flex Layout) */}
+      <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 items-start w-full">
+        {/* Step Guide & Companion Prompt (Flex 1) */}
+        <div className="flex-1 w-full bg-white p-5 sm:p-8 rounded-xl border border-brand-sand shadow-xs flex flex-col gap-6 min-w-0">
           <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-brand-sand/80">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-brand-sand/70 flex items-center justify-center text-brand-terracotta border border-brand-sand shrink-0">
@@ -188,8 +189,8 @@ export default function CookingStudioExperience() {
           </div>
         </div>
 
-        {/* Product Spotlight & Reorder Card */}
-        <div className="lg:col-span-4 bg-white p-5 sm:p-6 rounded-xl border border-brand-sand shadow-xs flex flex-col gap-4">
+        {/* Product Spotlight & Reorder Card (Fixed Width Column on Desktop) */}
+        <div className="w-full lg:w-84 xl:w-96 shrink-0 bg-white p-5 sm:p-6 rounded-xl border border-brand-sand shadow-xs flex flex-col gap-4">
           <Badge variant="gold" className="inline-flex items-center gap-1.5 self-start">
             <SparklesIcon className="w-3.5 h-3.5 text-brand-terracotta" />
             <span>Spotlight Spice Used</span>
@@ -227,9 +228,7 @@ export default function CookingStudioExperience() {
                 </Link>
 
                 <a
-                  href={`https://wa.me/${
-                    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919876543210"
-                  }?text=${encodeURIComponent(
+                  href={`https://wa.me/${SITE_INFO.whatsappNumber}?text=${encodeURIComponent(
                     `Hello Mom's Secret Spices! I am cooking ${recipe.name} in the studio and would like to order ${spotlightProduct.name}.`,
                   )}`}
                   target="_blank"

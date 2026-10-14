@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { SITE_INFO } from "@/data/info";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Mom's Secret Spices",
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPolicyPage() {
-  const email = process.env.NEXT_PUBLIC_EMAIL || "contact@momssecretspices.com";
+  const email = SITE_INFO.email;
 
   return (
     <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 flex flex-col gap-8 sm:gap-10">
