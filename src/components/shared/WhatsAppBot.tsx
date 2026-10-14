@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { ShoppingBag, Handshake, CookingPot, X, ArrowRight } from "lucide-react";
+import {
+  ShoppingBag,
+  Handshake,
+  CookingPot,
+  X,
+  ArrowRight,
+} from "lucide-react";
 import { WhatsAppIcon, SparklesIcon } from "@/components/ui/Icons";
 import { SITE_INFO } from "@/data/info";
 
@@ -62,7 +68,8 @@ export function WhatsAppBot() {
           </div>
 
           <p className="text-xs text-brand-brown/75 leading-relaxed bg-brand-cream/60 p-2.5 rounded-lg border border-brand-sand/60">
-            Namaste! How can we assist you with our stone-ground artisanal spices today?
+            Namaste! How can we assist you with our stone-ground artisanal
+            spices today?
           </p>
 
           <div className="flex flex-col gap-1.5">
@@ -108,7 +115,9 @@ export function WhatsAppBot() {
           <span className="relative inline-flex rounded-full h-3 w-3 bg-white" />
         </span>
         <WhatsAppIcon className="w-5 h-5 text-white shrink-0" />
-        <span className="text-xs font-bold hidden sm:inline-block">Chat with Us</span>
+        <span className="text-xs font-bold hidden sm:inline-block">
+          Chat with Us
+        </span>
         <SparklesIcon className="w-3.5 h-3.5 text-white/80 hidden sm:inline-block" />
       </button>
     </div>

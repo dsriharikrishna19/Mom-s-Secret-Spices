@@ -25,6 +25,8 @@ export interface Product {
   certifications?: string[];
   healthBenefits?: string[];
   origin?: string;
+  pricingStatus?: "verified" | "pending_trade_confirmation";
+  priceNotice?: string;
   createdAt: Date;
 }
 

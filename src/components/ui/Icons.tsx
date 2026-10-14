@@ -34,7 +34,9 @@ export const CompassIcon = ({
 export const ShieldCheckIcon = ({
   className = "w-4 h-4",
   size = 16,
-}: IconsProps) => <ShieldCheck className={className} size={size} strokeWidth={2} />;
+}: IconsProps) => (
+  <ShieldCheck className={className} size={size} strokeWidth={2} />
+);
 
 // Brand Lucide Icons
 export const SparklesIcon = ({

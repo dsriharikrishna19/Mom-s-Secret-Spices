@@ -20,8 +20,9 @@ export default function ExperiencePage() {
           The Heritage Cooking Experience
         </h1>
         <p className="text-sm sm:text-base text-brand-brown/75 leading-relaxed">
-          Witness the authentic stone-ground tempering craft in our 3D cinematic film,
-          showcasing the vibrant aroma and heritage of Indian home cooking.
+          Witness the authentic stone-ground tempering craft in our 3D cinematic
+          film, showcasing the vibrant aroma and heritage of Indian home
+          cooking.
         </p>
       </div>
 

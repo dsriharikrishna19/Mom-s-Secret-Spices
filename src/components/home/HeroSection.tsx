@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { SparklesIcon, ChefHatIcon, ArrowRightIcon, FlameIcon } from "@/components/ui/Icons";
-import { Badge } from "@/components/ui/Badge";
+import Image from "next/image";
 import {
-  ShimmerButton,
-  BorderBeam,
-  NumberTicker,
-  MotionLanding,
-} from "@/components/magicui";
+  SparklesIcon,
+  ChefHatIcon,
+  ArrowRightIcon,
+} from "@/components/ui/Icons";
+import { Badge } from "@/components/ui/Badge";
+import { ShimmerButton, BorderBeam, MotionLanding } from "@/components/magicui";
 
 export function HeroSection() {
   return (
@@ -24,19 +24,28 @@ export function HeroSection() {
           duration={0.7}
           className="lg:col-span-7 flex flex-col items-start gap-4 sm:gap-6"
         >
-          <Badge variant="gold" className="inline-flex items-center gap-1.5 self-start text-xs">
+          <Badge
+            variant="gold"
+            className="inline-flex items-center gap-1.5 self-start text-xs"
+          >
             <SparklesIcon className="w-3.5 h-3.5 text-brand-terracotta shrink-0" />
-            <span className="truncate">Small-Batch Artisanal Indian Spices</span>
+            <span className="truncate">
+              Small-Batch Artisanal Indian Spices
+            </span>
           </Badge>
 
           <div className="flex flex-col gap-2.5 sm:gap-3">
             <h1 className="font-heading text-xl sm:text-2xl font-bold text-brand-brown tracking-tight leading-snug">
               The Sacred Soul of Traditional Indian Cooking,{" "}
-              <span className="text-brand-terracotta">Stone-Ground with Love.</span>
+              <span className="text-brand-terracotta">
+                Stone-Ground with Love.
+              </span>
             </h1>
             <p className="font-sans text-xs sm:text-base text-brand-brown/80 leading-relaxed max-w-2xl">
-              Rediscover authentic regional aromatics made from single-origin whole spices. Slow-crushed
-              to preserve vital essential oils, free from synthetic extracts, and paired with an interactive 3D Cooking Studio to guide your home recipes.
+              Rediscover authentic regional aromatics made from single-origin
+              whole spices. Slow-crushed to preserve vital essential oils, free
+              from synthetic extracts, and paired with an interactive 3D Cooking
+              Studio to guide your home recipes.
             </p>
           </div>
 
@@ -61,28 +70,40 @@ export function HeroSection() {
             </Link>
           </div>
 
-          {/* Micro Trust Indicators with NumberTicker */}
+          {/* Micro Trust Indicators with Verified Brand Information */}
           <div className="grid grid-cols-3 gap-3 pt-4 border-t border-brand-sand/80 w-full text-left">
             <div className="flex flex-col gap-0.5">
-              <div className="flex items-baseline gap-0.5 font-heading font-bold text-sm sm:text-base text-brand-brown">
-                <NumberTicker value={27} className="font-bold" />
-                <span>+ Recipes</span>
+              <div className="flex items-baseline gap-1 font-heading font-bold text-sm sm:text-base text-brand-brown">
+                <span>27</span>
+                <span className="text-xs sm:text-sm font-semibold text-brand-terracotta">
+                  Blends
+                </span>
               </div>
-              <span className="text-xs text-brand-brown/65">Heirloom formulations</span>
+              <span className="text-xs text-brand-brown/65">
+                Regional Formulations
+              </span>
             </div>
             <div className="flex flex-col gap-0.5">
-              <div className="flex items-baseline gap-0.5 font-heading font-bold text-sm sm:text-base text-brand-brown">
-                <NumberTicker value={100} className="font-bold" />
-                <span>% Purity</span>
+              <div className="flex items-baseline gap-1 font-heading font-bold text-sm sm:text-base text-brand-brown">
+                <span>Est.</span>
+                <span className="text-xs sm:text-sm font-semibold text-brand-terracotta">
+                  1998
+                </span>
               </div>
-              <span className="text-xs text-brand-brown/65">Zero artificial fillers</span>
+              <span className="text-xs text-brand-brown/65">
+                Akshaya Foods Heritage
+              </span>
             </div>
             <div className="flex flex-col gap-0.5">
-              <div className="flex items-baseline gap-0.5 font-heading font-bold text-sm sm:text-base text-brand-brown">
-                <NumberTicker value={0} className="font-bold" />
-                <span>Chemicals</span>
+              <div className="flex items-baseline gap-1 font-heading font-bold text-sm sm:text-base text-brand-brown">
+                <span>4</span>
+                <span className="text-xs sm:text-sm font-semibold text-brand-terracotta">
+                  Packs
+                </span>
               </div>
-              <span className="text-xs text-brand-brown/65">Preservative free</span>
+              <span className="text-xs text-brand-brown/65">
+                50g to 250g Sizes
+              </span>
             </div>
           </div>
         </MotionLanding>
@@ -95,34 +116,37 @@ export function HeroSection() {
           className="lg:col-span-5 flex justify-center"
         >
           <div className="relative w-full max-w-md bg-white rounded-xl border border-brand-sand shadow-sm overflow-hidden flex flex-col">
-            <BorderBeam size={220} duration={12} colorFrom="#E8A33A" colorTo="#A9472A" />
+            <BorderBeam
+              size={220}
+              duration={12}
+              colorFrom="#E8A33A"
+              colorTo="#A9472A"
+            />
             {/* Studio Canvas Preview Visual */}
-            <div className="aspect-16/10 bg-linear-to-br from-brand-sand/60 via-brand-cream to-brand-sand/30 p-6 flex flex-col justify-between relative border-b border-brand-sand/70">
-              <div className="flex items-center justify-between">
+            <div className="aspect-16/10 bg-linear-to-br from-brand-sand/60 via-brand-cream to-brand-sand/30 p-4 sm:p-5 flex flex-col justify-between relative border-b border-brand-sand/70 overflow-hidden">
+              <Image
+                src="/images/products/product-collection-hero.jpg"
+                alt="Mom's Secret Spices premium glass jar spice collection"
+                fill
+                priority
+                sizes="(max-width: 640px) 100vw, 450px"
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+
+              <div className="flex items-center justify-between z-10">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm border border-brand-sand text-xs font-semibold text-brand-brown shadow-2xs">
                   <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
-                  <span>3D Heritage Kitchen Stage</span>
+                  <span>Artisanal Glass Jars</span>
                 </span>
-                <Badge variant="terracotta">Interactive</Badge>
+                <Badge variant="terracotta">27 Formulations</Badge>
               </div>
 
-              <div className="flex flex-col items-center justify-center text-center gap-2 py-4">
-                <div className="w-14 h-14 rounded-xl bg-white/90 border border-brand-sand shadow-xs flex items-center justify-center text-brand-terracotta">
-                  <FlameIcon className="w-7 h-7 text-brand-terracotta" />
-                </div>
-                <div className="flex flex-col gap-0.5">
-                  <span className="font-heading font-bold text-base text-brand-brown">
-                    Kadai & Stone Tempering
-                  </span>
-                  <span className="text-xs text-brand-brown/70">
-                    Real-time aroma & spice simulation
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between text-xs text-brand-brown/70 bg-white/80 backdrop-blur-sm p-2.5 rounded-lg border border-brand-sand/60">
-                <span>Current recipe:</span>
-                <span className="font-semibold text-brand-brown">Golden Milk (Haldi Doodh)</span>
+              <div className="flex items-center justify-between text-xs text-white/90 bg-black/50 backdrop-blur-md p-2.5 rounded-lg border border-white/20 z-10">
+                <span>Authentic Homestyle Range</span>
+                <span className="font-semibold text-brand-gold">
+                  Akshaya Foods
+                </span>
               </div>
             </div>
 
@@ -137,7 +161,8 @@ export function HeroSection() {
                     Mom&apos;s Culinary Guidance
                   </span>
                   <p className="text-xs text-brand-brown/75 leading-relaxed line-clamp-2">
-                    &ldquo;Gently warm the milk, sprinkle vibrant stone-ground turmeric, and let the healing aroma bloom.&rdquo;
+                    &ldquo;Gently warm the milk, sprinkle vibrant stone-ground
+                    turmeric, and let the healing aroma bloom.&rdquo;
                   </p>
                 </div>
               </div>

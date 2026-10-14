@@ -1,7 +1,8 @@
 export const SITE_INFO = {
   name: "Mom's Secret Spices",
-  tagline: "Authentic artisanal Indian spice blends freshly stone-ground and curated for everyday culinary magic.",
-  siteUrl: "https://momssecretspices.com",
+  tagline:
+    "Authentic artisanal Indian spice blends freshly stone-ground and curated for everyday culinary magic.",
+  siteUrl: "https://mom-s-secret-spices.vercel.app",
   email: "contact@momssecretspices.com",
   whatsappNumber: "919900161030",
   whatsappDisplay: "+91 99001 61030",

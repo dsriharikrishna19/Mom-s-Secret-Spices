@@ -7,7 +7,11 @@ import { ShimmerButton, MotionLanding } from "@/components/magicui";
 export function FinalCtaSection() {
   return (
     <section className="bg-brand-cream border-t border-brand-sand py-12 md:py-16 px-4 sm:px-6 lg:px-8 text-center overflow-hidden">
-      <MotionLanding direction="up" duration={0.6} className="max-w-3xl mx-auto flex flex-col items-center gap-5 sm:gap-6">
+      <MotionLanding
+        direction="up"
+        duration={0.6}
+        className="max-w-3xl mx-auto flex flex-col items-center gap-5 sm:gap-6"
+      >
         <Badge variant="gold" className="self-center">
           Experience Pure Spices
         </Badge>
@@ -16,8 +20,9 @@ export function FinalCtaSection() {
             Bring Grandma&apos;s Secret Aromas into Your Kitchen
           </h2>
           <p className="text-xs sm:text-sm md:text-base text-brand-brown/75 leading-relaxed max-w-xl">
-            Whether you are preparing a quick weeknight rasam or perfecting your festive biryani blend,
-            Mom&apos;s Secret Spices delivers unadulterated flavor in every pinch.
+            Whether you are preparing a quick weeknight rasam or perfecting your
+            festive biryani blend, Mom&apos;s Secret Spices delivers
+            unadulterated flavor in every pinch.
           </p>
         </div>
 

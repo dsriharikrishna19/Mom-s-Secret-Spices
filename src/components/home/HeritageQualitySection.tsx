@@ -28,12 +28,14 @@ export function HeritageQualitySection() {
             Heirloom Sourcing & Slow Stone Crushing
           </h2>
           <p className="text-xs sm:text-sm text-brand-brown/80 leading-relaxed">
-            Industrial high-speed commercial grinding generates intense friction heat (often exceeding 60°C),
-            scorching subtle essential oils and driving away volatile aromas.
+            Industrial high-speed commercial grinding generates intense friction
+            heat (often exceeding 60°C), scorching subtle essential oils and
+            driving away volatile aromas.
           </p>
           <p className="text-xs sm:text-sm text-brand-brown/80 leading-relaxed">
-            At Mom&apos;s Secret Spices, whole spices from dedicated regional growers are gently sun-dried and
-            ground slowly at low temperatures to ensure the vivid color, pungent fragrance, and therapeutic value
+            At Mom&apos;s Secret Spices, whole spices from dedicated regional
+            growers are gently sun-dried and ground slowly at low temperatures
+            to ensure the vivid color, pungent fragrance, and therapeutic value
             remain completely intact in every pack.
           </p>
           <Link
@@ -55,9 +57,12 @@ export function HeritageQualitySection() {
             <div className="w-8 h-8 rounded-lg bg-brand-cream border border-brand-sand flex items-center justify-center text-brand-terracotta">
               <FlameIcon className="w-4 h-4 text-brand-terracotta" />
             </div>
-            <h4 className="font-heading font-bold text-sm text-brand-brown">Low-Friction Stone Crushed</h4>
+            <h4 className="font-heading font-bold text-sm text-brand-brown">
+              Low-Friction Stone Crushed
+            </h4>
             <p className="text-xs text-brand-brown/70 leading-relaxed">
-              Slow processing retains naturally occurring curcumin, cineole, and piperine oils.
+              Slow processing retains naturally occurring curcumin, cineole, and
+              piperine oils.
             </p>
           </div>
 
@@ -65,9 +70,12 @@ export function HeritageQualitySection() {
             <div className="w-8 h-8 rounded-lg bg-brand-cream border border-brand-sand flex items-center justify-center text-brand-green">
               <LeafIcon className="w-4 h-4 text-brand-green" />
             </div>
-            <h4 className="font-heading font-bold text-sm text-brand-brown">Whole Sun-Dried Seeds</h4>
+            <h4 className="font-heading font-bold text-sm text-brand-brown">
+              Whole Sun-Dried Seeds
+            </h4>
             <p className="text-xs text-brand-brown/70 leading-relaxed">
-              Only intact seeds and dried pods are processed, eliminating low-grade dust or hulls.
+              Only intact seeds and dried pods are processed, eliminating
+              low-grade dust or hulls.
             </p>
           </div>
 
@@ -75,9 +83,12 @@ export function HeritageQualitySection() {
             <div className="w-8 h-8 rounded-lg bg-brand-cream border border-brand-sand flex items-center justify-center text-brand-brown">
               <ShieldCheckIcon className="w-4 h-4 text-brand-brown" />
             </div>
-            <h4 className="font-heading font-bold text-sm text-brand-brown">Zero Chemical Fillers</h4>
+            <h4 className="font-heading font-bold text-sm text-brand-brown">
+              Zero Chemical Fillers
+            </h4>
             <p className="text-xs text-brand-brown/70 leading-relaxed">
-              No starch bulking, anti-caking additives, synthetic pigments, or MSG.
+              No starch bulking, anti-caking additives, synthetic pigments, or
+              MSG.
             </p>
           </div>
 
@@ -85,9 +96,12 @@ export function HeritageQualitySection() {
             <div className="w-8 h-8 rounded-lg bg-brand-cream border border-brand-sand flex items-center justify-center text-brand-gold">
               <CheckIcon className="w-4 h-4 text-brand-gold" />
             </div>
-            <h4 className="font-heading font-bold text-sm text-brand-brown">Weekly Small Batches</h4>
+            <h4 className="font-heading font-bold text-sm text-brand-brown">
+              Weekly Small Batches
+            </h4>
             <p className="text-xs text-brand-brown/70 leading-relaxed">
-              Milled and packaged in small quantities so spices reach your pantry in peak freshness.
+              Milled and packaged in small quantities so spices reach your
+              pantry in peak freshness.
             </p>
           </div>
         </MotionLanding>

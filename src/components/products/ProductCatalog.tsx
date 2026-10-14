@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { Product } from "@/features/products/types";
+import Image from "next/image";
 import { useDebounce } from "@/hooks";
 import {
   SearchIcon,
@@ -15,32 +15,29 @@ import {
   EmptyState,
 } from "@/components/ui";
 import { MotionCard } from "@/components/magicui/motion-landing";
+import { getAllProducts } from "@/features/products";
 
-interface ProductCatalogProps {
-  initialProducts: Product[];
-}
-
-export default function ProductCatalog({
-  initialProducts,
-}: ProductCatalogProps) {
+export default function ProductCatalog() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [sortBy, setSortBy] = useState<"name" | "price-asc" | "price-desc">(
     "name",
   );
 
+  const products = getAllProducts();
+
   // Debounced search query via custom hook
   const debouncedSearch = useDebounce(searchQuery, 300);
 
   const categories = useMemo(() => {
-    const cats = new Set(initialProducts.map((p) => p.category));
+    const cats = new Set(products.map((p) => p.category));
     return ["all", ...Array.from(cats)];
-  }, [initialProducts]);
+  }, [products]);
 
   const filteredProducts = useMemo(() => {
     const query = debouncedSearch.trim().toLowerCase();
 
-    return initialProducts
+    return products
       .filter((product) => {
         const matchesSearch =
           !query ||
@@ -61,7 +58,7 @@ export default function ProductCatalog({
         if (sortBy === "price-desc") return priceB - priceA;
         return 0;
       });
-  }, [initialProducts, debouncedSearch, selectedCategory, sortBy]);
+  }, [products, debouncedSearch, selectedCategory, sortBy]);
 
   return (
     <div className="flex flex-col gap-6 sm:gap-8">
@@ -119,8 +116,7 @@ export default function ProductCatalog({
 
       {/* Results Count */}
       <div className="text-xs font-medium text-brand-brown/60">
-        Showing {filteredProducts.length} of {initialProducts.length} artisanal
-        spices
+        Showing {filteredProducts.length} of {products.length} artisanal spices
       </div>
 
       {/* Grid or Empty State */}
@@ -153,23 +149,47 @@ export default function ProductCatalog({
                 direction="up"
                 className="flex flex-col bg-white rounded-xl border border-brand-sand/80 shadow-xs hover:shadow-md hover:border-brand-terracotta/40 transition-all overflow-hidden group"
               >
-                {/* Visual Header */}
-                <div className="aspect-4/3 bg-gradient-to-br from-brand-sand/40 to-brand-cream flex flex-col items-center justify-center p-6 border-b border-brand-sand/50 relative">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white/80 border border-brand-sand shadow-xs flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                    {isChilliOrHot ? (
-                      <FlameIcon className="w-7 h-7 sm:w-8 sm:h-8 text-brand-terracotta" />
-                    ) : isHerbalOrLeafy ? (
-                      <LeafIcon className="w-7 h-7 sm:w-8 sm:h-8 text-brand-green" />
-                    ) : (
-                      <UtensilsIcon className="w-7 h-7 sm:w-8 sm:h-8 text-brand-gold" />
-                    )}
-                  </div>
-                  <div className="mt-3 flex gap-2">
-                    <Badge variant="terracotta">
+                {/* Visual Header - Full Card Image Presentation */}
+                <div className="aspect-square bg-brand-cream/40 flex flex-col items-center justify-center border-b border-brand-sand/50 relative overflow-hidden">
+                  {product.image && !product.image.includes("placeholder") ? (
+                    <Image
+                      src={product.image}
+                      alt={`${product.name} glass spice jar with black cap`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        target.style.display = "none";
+                      }}
+                    />
+                  ) : (
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/90 border border-brand-sand shadow-xs flex items-center justify-center">
+                      {isChilliOrHot ? (
+                        <FlameIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-terracotta" />
+                      ) : isHerbalOrLeafy ? (
+                        <LeafIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-green" />
+                      ) : (
+                        <UtensilsIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-gold" />
+                      )}
+                    </div>
+                  )}
+
+                  {/* Clean Floating Badges */}
+                  <div className="absolute bottom-3 left-3 flex gap-1.5 z-10 backdrop-blur-xs">
+                    <Badge
+                      variant="terracotta"
+                      className="shadow-xs text-[11px]"
+                    >
                       {product.packSizes[0]?.weight}
                       {product.packSizes[0]?.unit} pack
                     </Badge>
-                    <Badge variant="cream">{product.category}</Badge>
+                    <Badge
+                      variant="cream"
+                      className="shadow-xs text-[11px] bg-white/90"
+                    >
+                      {product.category}
+                    </Badge>
                   </div>
                 </div>
 
@@ -199,16 +219,30 @@ export default function ProductCatalog({
                   {/* Pricing & CTA */}
                   <div className="pt-3 border-t border-brand-sand/60 flex items-center justify-between gap-2">
                     <div>
-                      <span className="text-xs text-brand-brown/60 block">
-                        Starting from
-                      </span>
-                      <span className="text-lg sm:text-xl font-bold font-heading text-brand-terracotta">
-                        ₹{product.packSizes[0]?.mrp || "N/A"}
-                      </span>
+                      {product.pricingStatus ===
+                      "pending_trade_confirmation" ? (
+                        <div>
+                          <span className="text-[10px] text-amber-700 font-semibold block uppercase tracking-wider">
+                            Trade Confirmation
+                          </span>
+                          <span className="text-xs font-semibold text-brand-brown/80">
+                            Inquire for Rates
+                          </span>
+                        </div>
+                      ) : (
+                        <div>
+                          <span className="text-xs text-brand-brown/60 block">
+                            Starting from
+                          </span>
+                          <span className="text-lg sm:text-xl font-bold font-heading text-brand-terracotta">
+                            ₹{product.packSizes[0]?.mrp.toFixed(2) || "N/A"}
+                          </span>
+                        </div>
+                      )}
                     </div>
                     <Link
                       href={`/products/${product.slug}`}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-brand-terracotta/10 hover:bg-brand-terracotta text-brand-terracotta hover:text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors shrink-0"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-brand-terracotta/10 hover:bg-brand-terracotta text-brand-terracotta hover:text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors shrink-0 cursor-pointer"
                     >
                       <span>Details</span>
                       <ArrowRightIcon className="w-3.5 h-3.5" />

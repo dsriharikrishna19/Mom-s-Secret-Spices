@@ -71,7 +71,10 @@ export function SpiceRibbon() {
           ))}
         </div>
         {/* Set 2 (Duplicate for seamless infinite scroll) */}
-        <div className="flex shrink-0 items-center gap-8 pr-8" aria-hidden="true">
+        <div
+          className="flex shrink-0 items-center gap-8 pr-8"
+          aria-hidden="true"
+        >
           {SPICE_RIBBON_ITEMS.map((item, i) => (
             <div key={`s2-${i}`} className="flex items-center gap-3 shrink-0">
               <span className="w-2 h-2 rounded-full bg-brand-terracotta/80 shrink-0 shadow-xs" />
@@ -82,7 +85,10 @@ export function SpiceRibbon() {
           ))}
         </div>
         {/* Set 3 (Buffer for ultra-wide screens) */}
-        <div className="flex shrink-0 items-center gap-8 pr-8" aria-hidden="true">
+        <div
+          className="flex shrink-0 items-center gap-8 pr-8"
+          aria-hidden="true"
+        >
           {SPICE_RIBBON_ITEMS.map((item, i) => (
             <div key={`s3-${i}`} className="flex items-center gap-3 shrink-0">
               <span className="w-2 h-2 rounded-full bg-brand-terracotta/80 shrink-0 shadow-xs" />
@@ -93,7 +99,10 @@ export function SpiceRibbon() {
           ))}
         </div>
         {/* Set 4 */}
-        <div className="flex shrink-0 items-center gap-8 pr-8" aria-hidden="true">
+        <div
+          className="flex shrink-0 items-center gap-8 pr-8"
+          aria-hidden="true"
+        >
           {SPICE_RIBBON_ITEMS.map((item, i) => (
             <div key={`s4-${i}`} className="flex items-center gap-3 shrink-0">
               <span className="w-2 h-2 rounded-full bg-brand-terracotta/80 shrink-0 shadow-xs" />

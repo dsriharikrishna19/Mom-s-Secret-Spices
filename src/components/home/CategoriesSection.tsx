@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
-import { ArrowRightIcon, FlameIcon, LeafIcon, UtensilsIcon } from "@/components/ui/Icons";
+import {
+  ArrowRightIcon,
+  FlameIcon,
+  LeafIcon,
+  UtensilsIcon,
+} from "@/components/ui/Icons";
 import { MotionLanding, MotionCard } from "@/components/magicui";
 
 interface CatalogCategory {
@@ -19,15 +24,17 @@ const DEFAULT_CATEGORIES: CatalogCategory[] = [
     name: "Heritage Spice Blends",
     tag: "blend",
     count: "Sambar, Rasam, Garam Masala & Regional Blends",
-    description: "Authentic multi-spice formulations toasted and stone-ground to balance heat, aroma, and color.",
+    description:
+      "Authentic multi-spice formulations toasted and stone-ground to balance heat, aroma, and color.",
     badge: "Signature Craft",
     icon: <FlameIcon className="w-5 h-5 text-brand-terracotta" />,
   },
   {
-    name: "Single-Origin Pure Powders",
+    name: "Pure Ground Spices",
     tag: "spice",
     count: "Turmeric, Kashmiri Mirch, Coriander & Black Pepper",
-    description: "Pure whole seeds milled weekly in small batches without extraction residue or artificial color.",
+    description:
+      "Pure whole seeds milled weekly in small batches without extraction residue or artificial color.",
     badge: "Kitchen Staples",
     icon: <LeafIcon className="w-5 h-5 text-brand-green" />,
   },
@@ -35,7 +42,8 @@ const DEFAULT_CATEGORIES: CatalogCategory[] = [
     name: "Slow-Roasted Podis",
     tag: "blend",
     count: "Chutney Podi, Idli Podi, Bisibelebath & Puliyogre",
-    description: "Traditional South Indian kitchen accompaniments prepared with slow-roasted lentils and curry leaves.",
+    description:
+      "Traditional South Indian kitchen accompaniments prepared with slow-roasted lentils and curry leaves.",
     badge: "Breakfast & Rice",
     icon: <UtensilsIcon className="w-5 h-5 text-brand-gold" />,
   },
@@ -44,7 +52,10 @@ const DEFAULT_CATEGORIES: CatalogCategory[] = [
 export function CategoriesSection() {
   return (
     <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex flex-col gap-8">
-      <MotionLanding direction="up" className="text-center max-w-2xl mx-auto flex flex-col items-center gap-2">
+      <MotionLanding
+        direction="up"
+        className="text-center max-w-2xl mx-auto flex flex-col items-center gap-2"
+      >
         <Badge variant="terracotta" className="self-center">
           Culinary Categories
         </Badge>
@@ -52,7 +63,8 @@ export function CategoriesSection() {
           Explore By Flavor & Tradition
         </h2>
         <p className="text-xs sm:text-sm text-brand-brown/75 leading-relaxed">
-          Curated according to how Indian families cook — from daily dal and curry essentials to slow-roasted breakfast podis.
+          Curated according to how Indian families cook — from daily dal and
+          curry essentials to slow-roasted breakfast podis.
         </p>
       </MotionLanding>
 

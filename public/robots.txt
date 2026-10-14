@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://momssecretspices.com/sitemap.xml
+Sitemap: https://mom-s-secret-spices.vercel.app/sitemap.xml

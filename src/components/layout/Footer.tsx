@@ -95,21 +95,22 @@ export default function Footer() {
           <div className="bg-brand-cream/5 p-5 rounded-xl border border-brand-cream/10 flex flex-col gap-2">
             <h4 className="font-heading font-semibold text-xs sm:text-sm text-brand-cream flex items-center gap-2">
               <CheckIcon className="w-3.5 h-3.5 text-secondary shrink-0" />
-              <span>100% Pure & Potent</span>
+              <span>Authentic Homestyle Quality</span>
             </h4>
             <p className="text-xs text-brand-cream/70 leading-relaxed">
-              Zero artificial preservatives, no synthetic colorants. Pure
-              single-origin spices and family heritage blends.
+              Traditional Indian recipes curated by Akshaya Foods. Crafted to
+              deliver wholesome taste, rich aroma, and natural color in every
+              dish.
             </p>
           </div>
         </div>
 
         {/* Grand Baahubali Style Title Banner */}
-        <div className="relative py-8 sm:py-12 border-t border-brand-cream/10 text-center overflow-hidden flex flex-col items-center justify-center">
+        <div className="relative py-4 border-t border-brand-cream/10 text-center overflow-hidden flex flex-col items-center justify-center">
           <div className="flex items-center justify-center gap-3 w-full mb-3">
             <span className="h-px bg-linear-to-r from-transparent via-brand-gold/40 to-transparent flex-1 max-w-xs" />
             <span className="text-[10px] sm:text-xs font-heading tracking-[0.35em] uppercase text-brand-gold/80 font-bold">
-              Artisanal Heritage Since 1984
+              Artisanal Heritage • Est. 1998
             </span>
             <span className="h-px bg-linear-to-r from-transparent via-brand-gold/40 to-transparent flex-1 max-w-xs" />
           </div>
@@ -123,8 +124,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-6 border-t border-brand-cream/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-brand-cream/60">
-          <p className="text-center sm:text-left">© 2026 Mom&apos;s Secret Spices. Handcrafted with love.</p>
+        <div className="pt-4 pb-6 border-t border-brand-cream/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-brand-cream/60">
+          <p className="text-center sm:text-left">
+            © 2026 Mom&apos;s Secret Spices. Handcrafted with love.
+          </p>
           <div className="flex gap-6">
             <Link
               href="/privacy-policy"

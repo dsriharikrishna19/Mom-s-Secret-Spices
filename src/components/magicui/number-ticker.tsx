@@ -49,10 +49,7 @@ export function NumberTicker({
   );
 
   return (
-    <span
-      ref={ref}
-      className={cn("inline-block tabular-nums", className)}
-    >
+    <span ref={ref} className={cn("inline-block tabular-nums", className)}>
       0
     </span>
   );

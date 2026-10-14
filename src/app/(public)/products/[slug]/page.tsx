@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { getProductBySlug, getAllProducts } from "@/features/products";
 import {
   Badge,
@@ -90,13 +91,26 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         {/* Left Column: Visual Showcase */}
         <div className="lg:col-span-5 bg-white p-6 sm:p-10 rounded-xl border border-brand-sand shadow-xs flex flex-col items-center justify-center text-center gap-6">
-          <div className="w-40 h-40 sm:w-56 sm:h-56 rounded-full bg-gradient-to-tr from-brand-sand/60 to-brand-cream flex items-center justify-center shadow-inner border border-brand-sand">
-            {isChilliOrHot ? (
-              <FlameIcon className="w-20 h-20 sm:w-24 sm:h-24 text-brand-terracotta" />
-            ) : isHerbalOrLeafy ? (
-              <LeafIcon className="w-20 h-20 sm:w-24 sm:h-24 text-brand-green" />
+          <div className="relative w-48 h-48 sm:w-64 sm:h-64 rounded-2xl bg-gradient-to-tr from-brand-sand/40 to-brand-cream flex items-center justify-center shadow-inner border border-brand-sand overflow-hidden">
+            {product.image && !product.image.includes("placeholder") ? (
+              <Image
+                src={product.image}
+                alt={`${product.name} glass spice jar with black cap`}
+                fill
+                priority
+                sizes="(max-width: 640px) 100vw, 400px"
+                className="object-contain p-4 drop-shadow-md"
+              />
             ) : (
-              <UtensilsIcon className="w-20 h-20 sm:w-24 sm:h-24 text-brand-gold" />
+              <div>
+                {isChilliOrHot ? (
+                  <FlameIcon className="w-20 h-20 sm:w-24 sm:h-24 text-brand-terracotta" />
+                ) : isHerbalOrLeafy ? (
+                  <LeafIcon className="w-20 h-20 sm:w-24 sm:h-24 text-brand-green" />
+                ) : (
+                  <UtensilsIcon className="w-20 h-20 sm:w-24 sm:h-24 text-brand-gold" />
+                )}
+              </div>
             )}
           </div>
           <div className="flex flex-wrap gap-2 justify-center">
@@ -131,9 +145,23 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
           {/* Pack Sizes & Pricing */}
           <div className="bg-white p-5 sm:p-6 rounded-xl border border-brand-sand/80 shadow-xs flex flex-col gap-3.5">
-            <h3 className="font-heading text-xs font-bold text-brand-brown uppercase tracking-wider">
-              Available Packaging Options
-            </h3>
+            <div className="flex items-center justify-between">
+              <h3 className="font-heading text-xs font-bold text-brand-brown uppercase tracking-wider">
+                Packaging Options & Pricing
+              </h3>
+              {product.pricingStatus === "pending_trade_confirmation" && (
+                <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                  Rate Confirmation Pending
+                </span>
+              )}
+            </div>
+
+            {product.priceNotice && (
+              <p className="text-xs text-brand-brown/70 bg-brand-cream/60 p-2.5 rounded-lg border border-brand-sand/60">
+                ℹ️ {product.priceNotice}
+              </p>
+            )}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {product.packSizes.map((packSize) => (
                 <div
@@ -144,7 +172,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                     {packSize.weight} {packSize.unit}
                   </span>
                   <span className="font-heading font-bold text-brand-terracotta text-base sm:text-lg">
-                    ₹{packSize.mrp}
+                    {product.pricingStatus === "pending_trade_confirmation"
+                      ? "Contact for MRP"
+                      : `₹${packSize.mrp.toFixed(2)}`}
                   </span>
                 </div>
               ))}

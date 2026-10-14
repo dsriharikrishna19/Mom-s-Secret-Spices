@@ -23,7 +23,9 @@ export function EmptyState({
       className={`bg-white rounded-xl p-8 sm:p-12 text-center border border-brand-sand/80 shadow-xs flex flex-col items-center gap-4 max-w-xl mx-auto ${className}`}
     >
       <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-brand-cream border border-brand-sand flex items-center justify-center text-brand-brown/60 shadow-2xs">
-        {icon || <SearchIcon className="w-7 h-7 sm:w-8 sm:h-8 text-brand-brown/50" />}
+        {icon || (
+          <SearchIcon className="w-7 h-7 sm:w-8 sm:h-8 text-brand-brown/50" />
+        )}
       </div>
       <div className="flex flex-col gap-1.5">
         <h3 className="font-heading text-lg sm:text-xl font-bold text-brand-brown">

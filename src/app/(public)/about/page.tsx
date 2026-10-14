@@ -81,11 +81,11 @@ export default function AboutPage() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <h4 className="font-heading font-semibold text-xs sm:text-sm text-brand-brown">
-                  100% Single-Origin Sourcing
+                  Authentic Regional Recipes
                 </h4>
                 <p className="text-xs text-brand-brown/70 leading-relaxed">
-                  Traceable origins from trusted multigenerational spice
-                  growers.
+                  Time-honored spice proportions developed by Akshaya Foods
+                  since 1998.
                 </p>
               </div>
             </div>
@@ -96,11 +96,11 @@ export default function AboutPage() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <h4 className="font-heading font-semibold text-xs sm:text-sm text-brand-brown">
-                  Traditional Slow Stone-Grinding
+                  Quality Milling Craft
                 </h4>
                 <p className="text-xs text-brand-brown/70 leading-relaxed">
-                  Prevents friction heat from destroying essential aromatic
-                  oils.
+                  Carefully ground to retain aromatic oils, color, and culinary
+                  potency.
                 </p>
               </div>
             </div>
@@ -111,10 +111,11 @@ export default function AboutPage() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <h4 className="font-heading font-semibold text-xs sm:text-sm text-brand-brown">
-                  No Fillers or Additives
+                  Homestyle Flavor Balance
                 </h4>
                 <p className="text-xs text-brand-brown/70 leading-relaxed">
-                  Zero preservatives, artificial coloring, or MSG. Pure spice.
+                  Wholesome spice formulations balanced for everyday home
+                  cooking.
                 </p>
               </div>
             </div>
