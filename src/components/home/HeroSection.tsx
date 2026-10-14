@@ -12,29 +12,29 @@ import {
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-brand-cream border-b border-brand-sand/80 py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-brand-cream border-b border-brand-sand/80 py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
       {/* Warm ambient background gradients */}
       <div className="absolute top-10 left-1/4 w-80 h-80 bg-brand-gold/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-brand-terracotta/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Left Column: Editorial Eyebrow, Heading, Value Prop & CTAs */}
         <MotionLanding
           direction="right"
           duration={0.7}
-          className="lg:col-span-7 flex flex-col items-start gap-5 sm:gap-6"
+          className="lg:col-span-7 flex flex-col items-start gap-4 sm:gap-6"
         >
-          <Badge variant="gold" className="inline-flex items-center gap-1.5 self-start">
-            <SparklesIcon className="w-3.5 h-3.5 text-brand-terracotta" />
-            <span>Small-Batch Artisanal Indian Spice Craft</span>
+          <Badge variant="gold" className="inline-flex items-center gap-1.5 self-start text-xs">
+            <SparklesIcon className="w-3.5 h-3.5 text-brand-terracotta shrink-0" />
+            <span className="truncate">Small-Batch Artisanal Indian Spices</span>
           </Badge>
 
-          <div className="flex flex-col gap-3">
-            <h1 className="font-heading text-2xl sm:text-2xl font-bold text-brand-brown tracking-tight leading-snug">
+          <div className="flex flex-col gap-2.5 sm:gap-3">
+            <h1 className="font-heading text-xl sm:text-2xl font-bold text-brand-brown tracking-tight leading-snug">
               The Sacred Soul of Traditional Indian Cooking,{" "}
               <span className="text-brand-terracotta">Stone-Ground with Love.</span>
             </h1>
-            <p className="font-sans text-sm sm:text-base text-brand-brown/80 leading-relaxed max-w-2xl">
+            <p className="font-sans text-xs sm:text-base text-brand-brown/80 leading-relaxed max-w-2xl">
               Rediscover authentic regional aromatics made from single-origin whole spices. Slow-crushed
               to preserve vital essential oils, free from synthetic extracts, and paired with an interactive 3D Cooking Studio to guide your home recipes.
             </p>

@@ -33,7 +33,7 @@ export function WhatsAppBot() {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2.5">
+    <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50 flex flex-col items-end gap-2.5">
       {/* Floating Interactive Popup Menu */}
       {isOpen && (
         <div className="w-72 sm:w-80 bg-white rounded-xl border border-brand-sand shadow-lg p-4 flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-3 duration-200">

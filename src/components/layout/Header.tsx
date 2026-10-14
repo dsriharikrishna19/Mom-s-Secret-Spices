@@ -27,23 +27,23 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-brand-cream/92 backdrop-blur-md border-b border-brand-sand">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-12 h-12 rounded-full overflow-hidden border border-brand-sand shadow-xs bg-white shrink-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+          <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border border-brand-sand shadow-xs bg-white shrink-0">
             <Image
               src="/brand-logo.jpg"
               alt="Mom's Secret Spices - Akshaya Foods Logo"
               fill
-              sizes="48px"
+              sizes="(max-width: 640px) 40px, 48px"
               className="object-cover"
               priority
             />
           </div>
-          <div className="flex flex-col">
-            <span className="font-heading font-bold text-lg sm:text-xl text-brand-brown tracking-tight group-hover:text-brand-terracotta transition-colors leading-tight">
+          <div className="flex flex-col min-w-0">
+            <span className="font-heading font-bold text-base sm:text-xl text-brand-brown tracking-tight group-hover:text-brand-terracotta transition-colors leading-tight truncate">
               Mom&apos;s Secret Spices
             </span>
-            <span className="text-[11px] text-brand-brown/60 tracking-wider font-medium uppercase">
+            <span className="text-[10px] sm:text-[11px] text-brand-brown/60 tracking-wider font-medium uppercase truncate">
               By Akshaya Foods
             </span>
           </div>
@@ -82,12 +82,12 @@ export default function Header() {
         </nav>
 
         {/* CTA Button & Mobile Toggle */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href="/experience"
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white bg-brand-terracotta hover:bg-[#8e3920] rounded-xl shadow-xs hover:shadow transition-all"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-semibold text-white bg-brand-terracotta hover:bg-[#8e3920] rounded-xl shadow-xs hover:shadow transition-all whitespace-nowrap"
           >
-            <SparklesIcon className="w-4 h-4 text-brand-gold" />
+            <SparklesIcon className="w-4 h-4 text-brand-gold shrink-0" />
             <span>Try Cooking Studio</span>
           </Link>
 
@@ -95,7 +95,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg border border-brand-sand bg-white/80 text-brand-brown hover:bg-brand-sand/50 transition-colors"
+            className="md:hidden p-2 rounded-xl border border-brand-sand bg-white text-brand-brown hover:bg-brand-sand/50 transition-colors shrink-0"
             aria-label="Toggle navigation menu"
           >
             <svg
@@ -153,6 +153,16 @@ export default function Header() {
               </Link>
             );
           })}
+          <div className="pt-2">
+            <Link
+              href="/experience"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-2 w-full py-2.5 px-4 text-xs font-semibold text-white bg-brand-terracotta hover:bg-[#8e3920] rounded-xl shadow-xs transition-all"
+            >
+              <SparklesIcon className="w-4 h-4 text-brand-gold" />
+              <span>Try 3D Cooking Studio</span>
+            </Link>
+          </div>
         </div>
       )}
     </header>
