@@ -2,10 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Copy, Check, Sparkles, Film, Compass, Flame } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
+import { Copy, Check, Sparkles, Film, Compass } from "lucide-react";
 import { BorderBeam } from "@/components/magicui/border-beam";
-import { ShimmerButton } from "@/components/magicui/shimmer-button";
 
 const CINEMATIC_PROMPT = `Cinematic 8K ultra-realistic culinary film shot on ARRI Alexa LF, 50mm anamorphic lens, shallow depth of field. 
 
