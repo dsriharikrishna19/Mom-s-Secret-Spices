@@ -15,10 +15,10 @@ export function Skeleton({ className = "", ...props }: SkeletonProps) {
 
 export function ProductCardSkeleton() {
   return (
-    <div className="flex flex-col bg-white rounded-2xl border border-brand-sand/80 shadow-xs overflow-hidden">
+    <div className="flex flex-col bg-white rounded-xl border border-brand-sand/80 shadow-xs overflow-hidden">
       {/* Visual Top */}
       <div className="aspect-4/3 bg-brand-sand/30 p-6 flex flex-col items-center justify-center relative">
-        <Skeleton className="w-16 h-16 rounded-2xl" />
+        <Skeleton className="w-16 h-16 rounded-xl" />
         <div className="mt-4 flex gap-2">
           <Skeleton className="w-16 h-5 rounded-full" />
           <Skeleton className="w-20 h-5 rounded-full" />

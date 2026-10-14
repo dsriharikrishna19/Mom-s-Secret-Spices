@@ -21,17 +21,17 @@ const KitchenCanvas = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full aspect-16/9 bg-linear-to-br from-brand-sand/40 via-brand-cream to-brand-sand/30 rounded-3xl border border-brand-sand/80 flex flex-col items-center justify-center p-8 animate-pulse text-center">
-        <span className="text-4xl mb-3">🍳</span>
-        <span className="font-heading font-semibold text-brand-brown text-base">
+      <div className="w-full aspect-16/9 bg-linear-to-br from-brand-sand/40 via-brand-cream to-brand-sand/30 rounded-xl border border-brand-sand/80 flex flex-col items-center justify-center p-6 sm:p-8 animate-pulse text-center gap-2">
+        <UtensilsIcon className="w-8 h-8 text-brand-terracotta" />
+        <span className="font-heading font-semibold text-brand-brown text-sm sm:text-base">
           Heating up the kitchen stage...
         </span>
-        <span className="text-xs text-brand-brown/60 mt-1">
+        <span className="text-xs text-brand-brown/60">
           Loading 3D cookware and spice simulation
         </span>
       </div>
     ),
-  }
+  },
 );
 
 export default function CookingStudioExperience() {
@@ -69,14 +69,14 @@ export default function CookingStudioExperience() {
   };
 
   return (
-    <div className="space-y-10">
+    <div className="flex flex-col gap-8 sm:gap-10">
       {/* Recipe Selection Tabs */}
-      <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-brand-sand shadow-xs">
-        <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-xl border border-brand-sand shadow-xs">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <span className="text-xs font-bold uppercase tracking-wider text-brand-brown/60">
             Choose Heritage Dish:
           </span>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {RECIPES.map((r, idx) => (
               <button
                 key={r.id}
@@ -99,7 +99,9 @@ export default function CookingStudioExperience() {
 
         <Badge variant="green" className="inline-flex items-center gap-1.5">
           <ClockIcon className="w-3.5 h-3.5" />
-          <span>Prep: {recipe.prepTime}m • Cook: {recipe.cookTime}m</span>
+          <span>
+            Prep: {recipe.prepTime}m • Cook: {recipe.cookTime}m
+          </span>
         </Badge>
       </div>
 
@@ -112,15 +114,15 @@ export default function CookingStudioExperience() {
       />
 
       {/* Interactive Cooking Story Step Console */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
         {/* Step Guide & Companion Prompt */}
-        <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-3xl border border-brand-sand shadow-xs space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-brand-sand/80">
+        <div className="lg:col-span-8 bg-white p-5 sm:p-8 rounded-xl border border-brand-sand shadow-xs flex flex-col gap-6">
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-brand-sand/80">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-brand-sand/70 flex items-center justify-center text-brand-terracotta border border-brand-sand">
+              <div className="w-10 h-10 rounded-full bg-brand-sand/70 flex items-center justify-center text-brand-terracotta border border-brand-sand shrink-0">
                 <ChefHatIcon className="w-5 h-5 text-brand-terracotta" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <h3 className="font-heading font-bold text-base text-brand-brown">
                   Mom&apos;s Cooking Guide
                 </h3>
@@ -139,8 +141,8 @@ export default function CookingStudioExperience() {
                     idx === currentStepIndex
                       ? "w-6 bg-brand-terracotta"
                       : idx < currentStepIndex
-                      ? "w-2.5 bg-brand-green"
-                      : "w-2.5 bg-brand-sand"
+                        ? "w-2.5 bg-brand-green"
+                        : "w-2.5 bg-brand-sand"
                   }`}
                 />
               ))}
@@ -148,17 +150,17 @@ export default function CookingStudioExperience() {
           </div>
 
           {/* Current Step Instruction */}
-          <div className="space-y-3">
-            <h2 className="font-heading text-2xl font-bold text-brand-brown">
+          <div className="flex flex-col gap-3">
+            <h2 className="font-heading text-xl sm:text-2xl font-bold text-brand-brown">
               {step.title}
             </h2>
-            <p className="text-base text-brand-brown/85 leading-relaxed bg-brand-cream/60 p-4 rounded-2xl border border-brand-sand/60">
+            <p className="text-sm sm:text-base text-brand-brown/85 leading-relaxed bg-brand-cream/60 p-4 rounded-xl border border-brand-sand/60">
               &ldquo;{step.description}&rdquo;
             </p>
           </div>
 
           {/* Step Actions */}
-          <div className="flex items-center justify-between pt-2">
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
             <button
               onClick={handlePrevStep}
               disabled={currentStepIndex === 0}
@@ -187,24 +189,26 @@ export default function CookingStudioExperience() {
         </div>
 
         {/* Product Spotlight & Reorder Card */}
-        <div className="lg:col-span-4 bg-white p-6 rounded-3xl border border-brand-sand shadow-xs space-y-4">
-          <Badge variant="gold" className="inline-flex items-center gap-1.5">
+        <div className="lg:col-span-4 bg-white p-5 sm:p-6 rounded-xl border border-brand-sand shadow-xs flex flex-col gap-4">
+          <Badge variant="gold" className="inline-flex items-center gap-1.5 self-start">
             <SparklesIcon className="w-3.5 h-3.5 text-brand-terracotta" />
             <span>Spotlight Spice Used</span>
           </Badge>
 
           {spotlightProduct ? (
-            <div className="space-y-4">
-              <div className="aspect-square bg-gradient-to-tr from-brand-sand/50 to-brand-cream rounded-2xl flex flex-col items-center justify-center p-6 border border-brand-sand/60">
-                <div className="w-16 h-16 rounded-2xl bg-white/80 border border-brand-sand flex items-center justify-center text-brand-terracotta mb-3 shadow-xs">
-                  <UtensilsIcon className="w-8 h-8 text-brand-terracotta" />
+            <div className="flex flex-col gap-4">
+              <div className="aspect-square bg-linear-to-tr from-brand-sand/50 to-brand-cream rounded-xl flex flex-col items-center justify-center p-6 border border-brand-sand/60 gap-3">
+                <div className="w-14 h-14 rounded-xl bg-white/80 border border-brand-sand flex items-center justify-center text-brand-terracotta shadow-xs">
+                  <UtensilsIcon className="w-7 h-7 text-brand-terracotta" />
                 </div>
-                <span className="font-heading font-bold text-base text-brand-brown text-center">
-                  {spotlightProduct.name}
-                </span>
-                <span className="text-xs text-brand-brown/60 mt-1">
-                  Freshly Stone-Ground
-                </span>
+                <div className="text-center">
+                  <span className="font-heading font-bold text-base text-brand-brown block">
+                    {spotlightProduct.name}
+                  </span>
+                  <span className="text-xs text-brand-brown/60 block mt-0.5">
+                    Freshly Stone-Ground
+                  </span>
+                </div>
               </div>
 
               <div className="flex items-center justify-between text-sm">
@@ -214,7 +218,7 @@ export default function CookingStudioExperience() {
                 </span>
               </div>
 
-              <div className="space-y-2 pt-2">
+              <div className="flex flex-col gap-2 pt-2">
                 <Link
                   href={`/products/${spotlightProduct.slug}`}
                   className="w-full inline-flex items-center justify-center px-4 py-2.5 bg-brand-cream hover:bg-brand-sand text-brand-brown text-xs font-semibold rounded-xl border border-brand-sand transition-all text-center"
@@ -226,7 +230,7 @@ export default function CookingStudioExperience() {
                   href={`https://wa.me/${
                     process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919876543210"
                   }?text=${encodeURIComponent(
-                    `Hello Mom's Secret Spices! I am cooking ${recipe.name} in the studio and would like to order ${spotlightProduct.name}.`
+                    `Hello Mom's Secret Spices! I am cooking ${recipe.name} in the studio and would like to order ${spotlightProduct.name}.`,
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"

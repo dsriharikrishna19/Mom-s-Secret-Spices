@@ -10,62 +10,69 @@
  * - Product photography
  */
 
-import { Product } from '@/types/product';
+import { Product } from "@/types/product";
 
 export const PRODUCTS: Product[] = [
   {
-    id: 'product_001',
-    slug: 'turmeric-powder',
-    name: 'Turmeric Powder',
-    description: 'Premium quality turmeric powder sourced from the finest farms.',
-    category: 'spice',
-    image: '/images/products/turmeric-powder.jpg',
+    id: "product_001",
+    slug: "turmeric-powder",
+    name: "Turmeric Powder",
+    description:
+      "Premium quality turmeric powder sourced from the finest farms.",
+    category: "spice",
+    image: "/images/products/turmeric-powder.jpg",
     packSizes: [
       {
-        id: 'size_001_100g',
+        id: "size_001_100g",
         weight: 100,
-        unit: 'g',
+        unit: "g",
         mrp: 150,
-        currency: 'INR',
+        currency: "INR",
         available: true,
       },
       {
-        id: 'size_001_250g',
+        id: "size_001_250g",
         weight: 250,
-        unit: 'g',
+        unit: "g",
         mrp: 350,
-        currency: 'INR',
+        currency: "INR",
         available: true,
       },
     ],
-    ingredients: ['Turmeric'],
+    ingredients: ["Turmeric"],
     certifications: [],
-    healthBenefits: ['Anti-inflammatory', 'Antioxidant properties'],
-    origin: 'India',
-    createdAt: new Date('2026-01-01'),
+    healthBenefits: ["Anti-inflammatory", "Antioxidant properties"],
+    origin: "India",
+    createdAt: new Date("2026-01-01"),
   },
   {
-    id: 'product_002',
-    slug: 'garam-masala-blend',
-    name: 'Garam Masala Blend',
-    description: 'Traditional garam masala blend with aromatic spices.',
-    category: 'blend',
-    image: '/images/products/garam-masala.jpg',
+    id: "product_002",
+    slug: "garam-masala-blend",
+    name: "Garam Masala Blend",
+    description: "Traditional garam masala blend with aromatic spices.",
+    category: "blend",
+    image: "/images/products/garam-masala.jpg",
     packSizes: [
       {
-        id: 'size_002_100g',
+        id: "size_002_100g",
         weight: 100,
-        unit: 'g',
+        unit: "g",
         mrp: 180,
-        currency: 'INR',
+        currency: "INR",
         available: true,
       },
     ],
-    ingredients: ['Cardamom', 'Cinnamon', 'Cloves', 'Black Pepper', 'Bay Leaves'],
+    ingredients: [
+      "Cardamom",
+      "Cinnamon",
+      "Cloves",
+      "Black Pepper",
+      "Bay Leaves",
+    ],
     certifications: [],
-    healthBenefits: ['Improves digestion', 'Enhances flavor'],
-    origin: 'India',
-    createdAt: new Date('2026-01-01'),
+    healthBenefits: ["Improves digestion", "Enhances flavor"],
+    origin: "India",
+    createdAt: new Date("2026-01-01"),
   },
 ];
 
@@ -80,8 +87,6 @@ export function getProductById(id: string): Product | undefined {
 }
 
 // Helper function to get all products by category
-export function getProductsByCategory(
-  category: string
-): Product[] {
+export function getProductsByCategory(category: string): Product[] {
   return PRODUCTS.filter((p) => p.category === category);
 }

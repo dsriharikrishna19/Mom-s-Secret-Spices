@@ -10,17 +10,19 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
-      <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
+    <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 flex flex-col gap-8 sm:gap-10">
+      <div className="text-center max-w-2xl mx-auto flex flex-col items-center gap-3">
         <Badge variant="gold" className="inline-flex items-center gap-1.5">
           <SparklesIcon className="w-3.5 h-3.5 text-brand-terracotta" />
           <span>Interactive 3D Kitchen Studio</span>
         </Badge>
-        <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-brand-brown">
+        <h1 className="font-heading text-xl sm:text-2xl font-bold text-brand-brown">
           Immersive Cooking Experience
         </h1>
-        <p className="text-base text-brand-brown/75 leading-relaxed">
-          Step inside our virtual Indian home kitchen. Follow step-by-step heirloom preparations, watch the stone pot temper, and master authentic spice techniques.
+        <p className="text-sm sm:text-base text-brand-brown/75 leading-relaxed">
+          Step inside our virtual Indian home kitchen. Follow step-by-step
+          heirloom preparations, watch the stone pot temper, and master
+          authentic spice techniques.
         </p>
       </div>
 

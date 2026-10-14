@@ -25,33 +25,39 @@ export interface IconsProps {
 }
 
 // Brand Lucide Icons
-export const SparklesIcon = ({ className = "w-4 h-4", size = 16 }: IconsProps) => (
-  <Sparkles className={className} size={size} />
-);
+export const SparklesIcon = ({
+  className = "w-4 h-4",
+  size = 16,
+}: IconsProps) => <Sparkles className={className} size={size} />;
 
-export const SearchIcon = ({ className = "w-4 h-4", size = 16 }: IconsProps) => (
-  <Search className={className} size={size} />
-);
+export const SearchIcon = ({
+  className = "w-4 h-4",
+  size = 16,
+}: IconsProps) => <Search className={className} size={size} />;
 
-export const FilterIcon = ({ className = "w-4 h-4", size = 16 }: IconsProps) => (
-  <Filter className={className} size={size} />
-);
+export const FilterIcon = ({
+  className = "w-4 h-4",
+  size = 16,
+}: IconsProps) => <Filter className={className} size={size} />;
 
 export const CheckIcon = ({ className = "w-4 h-4", size = 16 }: IconsProps) => (
   <Check className={className} size={size} strokeWidth={2.5} />
 );
 
-export const ArrowRightIcon = ({ className = "w-4 h-4", size = 16 }: IconsProps) => (
-  <ArrowRight className={className} size={size} />
-);
+export const ArrowRightIcon = ({
+  className = "w-4 h-4",
+  size = 16,
+}: IconsProps) => <ArrowRight className={className} size={size} />;
 
-export const ArrowLeftIcon = ({ className = "w-4 h-4", size = 16 }: IconsProps) => (
-  <ArrowLeft className={className} size={size} />
-);
+export const ArrowLeftIcon = ({
+  className = "w-4 h-4",
+  size = 16,
+}: IconsProps) => <ArrowLeft className={className} size={size} />;
 
-export const ChefHatIcon = ({ className = "w-5 h-5", size = 20 }: IconsProps) => (
-  <ChefHat className={className} size={size} />
-);
+export const ChefHatIcon = ({
+  className = "w-5 h-5",
+  size = 20,
+}: IconsProps) => <ChefHat className={className} size={size} />;
 
 export const FlameIcon = ({ className = "w-4 h-4", size = 16 }: IconsProps) => (
   <Flame className={className} size={size} />
@@ -81,13 +87,15 @@ export const StoreIcon = ({ className = "w-4 h-4", size = 16 }: IconsProps) => (
   <Store className={className} size={size} />
 );
 
-export const UtensilsIcon = ({ className = "w-4 h-4", size = 16 }: IconsProps) => (
-  <UtensilsCrossed className={className} size={size} />
-);
+export const UtensilsIcon = ({
+  className = "w-4 h-4",
+  size = 16,
+}: IconsProps) => <UtensilsCrossed className={className} size={size} />;
 
-export const LayersIcon = ({ className = "w-4 h-4", size = 16 }: IconsProps) => (
-  <Layers className={className} size={size} />
-);
+export const LayersIcon = ({
+  className = "w-4 h-4",
+  size = 16,
+}: IconsProps) => <Layers className={className} size={size} />;
 
 export const AwardIcon = ({ className = "w-4 h-4", size = 16 }: IconsProps) => (
   <Award className={className} size={size} />

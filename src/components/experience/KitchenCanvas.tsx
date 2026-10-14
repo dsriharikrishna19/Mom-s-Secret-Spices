@@ -53,7 +53,7 @@ export default function KitchenCanvas({
       45,
       container.clientWidth / container.clientHeight,
       0.1,
-      100
+      100,
     );
     camera.position.set(0, 3.5, 7.5);
     camera.lookAt(0, 0.8, 0);
@@ -171,7 +171,7 @@ export default function KitchenCanvas({
 
     particleGeo.setAttribute(
       "position",
-      new THREE.BufferAttribute(positions, 3)
+      new THREE.BufferAttribute(positions, 3),
     );
 
     const particleMat = new THREE.PointsMaterial({
@@ -256,33 +256,39 @@ export default function KitchenCanvas({
 
   if (webglError) {
     return (
-      <div className="w-full aspect-16/9 bg-linear-to-br from-brand-sand/50 via-brand-cream to-brand-sand/40 rounded-2xl border border-brand-sand flex flex-col items-center justify-center p-8 text-center">
-        <span className="text-5xl mb-3">🍳</span>
-        <h3 className="font-heading font-bold text-brand-brown text-lg">
+      <div className="w-full aspect-16/9 bg-linear-to-br from-brand-sand/50 via-brand-cream to-brand-sand/40 rounded-xl border border-brand-sand flex flex-col items-center justify-center p-6 sm:p-8 text-center gap-2">
+        <div className="w-12 h-12 rounded-xl bg-white/80 border border-brand-sand flex items-center justify-center text-brand-terracotta shadow-xs">
+          <FlameIcon className="w-6 h-6 text-brand-terracotta" />
+        </div>
+        <h3 className="font-heading font-bold text-brand-brown text-base sm:text-lg">
           3D Cooking Studio
         </h3>
-        <p className="text-sm text-brand-brown/70 max-w-sm mt-1">
-          {stepTitle || "Step into our Indian kitchen with authentic stone cookware and aroma tempering."}
+        <p className="text-xs sm:text-sm text-brand-brown/70 max-w-sm">
+          {stepTitle ||
+            "Step into our Indian kitchen with authentic stone cookware and aroma tempering."}
         </p>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full aspect-16/9 rounded-3xl overflow-hidden border border-brand-sand/80 shadow-inner bg-brand-cream">
+    <div className="relative w-full aspect-16/9 rounded-xl overflow-hidden border border-brand-sand/80 shadow-inner bg-brand-cream max-w-full">
       <div ref={mountRef} className="w-full h-full" />
 
       {/* Floating Status Badge Overlay */}
-      <div className="absolute top-4 left-4 z-10 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-brand-sand shadow-2xs text-xs font-semibold text-brand-brown">
+      <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-brand-sand shadow-2xs text-xs font-semibold text-brand-brown">
         <span className="w-2.5 h-2.5 rounded-full bg-brand-green animate-pulse" />
         <span className="capitalize">{sceneState} • Indian Home Kitchen</span>
       </div>
 
       {/* Active Spice Particle Indicator */}
       {activeSpice && (
-        <div className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-brand-brown/90 text-white backdrop-blur-md border border-brand-gold/40 text-xs font-medium shadow-md">
+        <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-10 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-brown/90 text-white backdrop-blur-md border border-brand-gold/40 text-xs font-medium shadow-md">
           <FlameIcon className="w-3.5 h-3.5 text-brand-gold" />
-          <span>Tempering: <span className="font-bold text-brand-gold">{activeSpice}</span></span>
+          <span>
+            Tempering:{" "}
+            <span className="font-bold text-brand-gold">{activeSpice}</span>
+          </span>
         </div>
       )}
     </div>

@@ -13,42 +13,43 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex-1 flex items-center justify-center px-4 py-16 sm:py-24">
-      <div className="w-full max-w-md bg-white rounded-3xl p-8 border border-brand-sand shadow-xs space-y-6">
-        <div className="text-center space-y-2">
-          <div className="w-14 h-14 rounded-2xl bg-brand-cream border border-brand-sand flex items-center justify-center text-brand-terracotta mx-auto mb-2">
-            <UtensilsIcon className="w-7 h-7 text-brand-terracotta" />
+    <main className="flex-1 flex items-center justify-center px-4 py-12 sm:py-20">
+      <div className="w-full max-w-md bg-white rounded-xl p-6 sm:p-8 border border-brand-sand shadow-xs flex flex-col gap-6">
+        <div className="text-center flex flex-col items-center gap-2">
+          <div className="w-12 h-12 rounded-xl bg-brand-cream border border-brand-sand flex items-center justify-center text-brand-terracotta">
+            <UtensilsIcon className="w-6 h-6 text-brand-terracotta" />
           </div>
-          <h1 className="font-heading text-2xl font-bold text-brand-brown">
+          <h1 className="font-heading text-xl sm:text-2xl font-bold text-brand-brown">
             Welcome Back
           </h1>
-          <p className="text-sm text-brand-brown/70">
+          <p className="text-xs sm:text-sm text-brand-brown/70">
             Sign in to your Mom&apos;s Secret Spices profile
           </p>
         </div>
 
         {submitted ? (
-          <div className="bg-brand-cream/80 p-6 rounded-2xl border border-brand-sand text-center space-y-3">
-            <div className="w-10 h-10 rounded-full bg-brand-sand/60 flex items-center justify-center text-brand-terracotta mx-auto">
+          <div className="bg-brand-cream/80 p-5 sm:p-6 rounded-xl border border-brand-sand text-center flex flex-col items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-brand-sand/60 flex items-center justify-center text-brand-terracotta">
               <SparklesIcon className="w-5 h-5 text-brand-terracotta" />
             </div>
             <p className="text-sm font-semibold text-brand-brown">
               Welcome to the Mom&apos;s Secret Spices kitchen!
             </p>
             <p className="text-xs text-brand-brown/70">
-              In this MVP edition, full catalog browsing and recipe guidance are immediately accessible.
+              In this MVP edition, full catalog browsing and recipe guidance are
+              immediately accessible.
             </p>
             <Link
               href="/experience"
-              className="inline-block mt-2 px-5 py-2.5 bg-brand-terracotta text-white font-semibold text-xs rounded-xl shadow-xs hover:bg-[#8e3920] transition-all"
+              className="mt-2 px-5 py-2.5 bg-brand-terracotta text-white font-semibold text-xs rounded-xl shadow-xs hover:bg-[#8e3920] transition-all"
             >
               Enter Cooking Studio →
             </Link>
           </div>
         ) : (
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <div>
-              <label className="block text-xs font-bold text-brand-brown uppercase tracking-wider mb-1.5">
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-bold text-brand-brown uppercase tracking-wider">
                 Email Address
               </label>
               <input
@@ -59,8 +60,8 @@ export default function LoginPage() {
               />
             </div>
 
-            <div>
-              <label className="block text-xs font-bold text-brand-brown uppercase tracking-wider mb-1.5">
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-bold text-brand-brown uppercase tracking-wider">
                 Password
               </label>
               <input
@@ -83,7 +84,10 @@ export default function LoginPage() {
         )}
 
         <div className="pt-4 border-t border-brand-sand/80 text-center text-xs text-brand-brown/70">
-          <span>Note: In this MVP version, all recipes and orders are open without login via direct WhatsApp and email.</span>
+          <span>
+            Note: In this MVP version, all recipes and orders are open without
+            login via direct WhatsApp and email.
+          </span>
         </div>
       </div>
     </main>

@@ -2,7 +2,8 @@ import { MetadataRoute } from "next";
 import { getAllProducts } from "@/features/products";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://momssecretspices.com";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://momssecretspices.com";
   const products = getAllProducts();
 
   const productUrls = products.map((product) => ({

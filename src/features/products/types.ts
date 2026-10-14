@@ -2,14 +2,14 @@
  * Products Feature - Type Definitions
  */
 
-export type ProductCategory = 'spice' | 'blend' | 'seasoning' | 'masala';
+export type ProductCategory = "spice" | "blend" | "seasoning" | "masala";
 
 export interface ProductPackSize {
   id: string;
   weight: number;
-  unit: 'g' | 'kg' | 'ml' | 'l';
+  unit: "g" | "kg" | "ml" | "l";
   mrp: number;
-  currency: 'INR' | 'USD';
+  currency: "INR" | "USD";
   available: boolean;
 }
 
@@ -31,8 +31,8 @@ export interface Product {
 export interface ProductFilters {
   category?: string;
   search?: string;
-  sortBy?: 'name' | 'price' | 'newest';
-  sortOrder?: 'asc' | 'desc';
+  sortBy?: "name" | "price" | "newest";
+  sortOrder?: "asc" | "desc";
 }
 
 export interface ProductEnquiry {

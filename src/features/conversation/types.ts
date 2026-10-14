@@ -4,28 +4,34 @@
  */
 
 export type SceneState =
-  | 'welcome'
-  | 'idle'
-  | 'listening'
-  | 'thinking'
-  | 'speaking'
-  | 'cooking'
-  | 'show_spice'
-  | 'product_spotlight'
-  | 'complete'
-  | 'error';
+  | "welcome"
+  | "idle"
+  | "listening"
+  | "thinking"
+  | "speaking"
+  | "cooking"
+  | "show_spice"
+  | "product_spotlight"
+  | "complete"
+  | "error";
 
-export type InteractionMode = 'text' | 'voice' | 'hybrid';
+export type InteractionMode = "text" | "voice" | "hybrid";
 
 export interface ConversationMessage {
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   content: string;
   timestamp: Date;
   audioUrl?: string;
 }
 
 export interface SceneAction {
-  type: 'camera_move' | 'character_gesture' | 'spice_pour' | 'animation' | 'product_show' | 'recipe_step';
+  type:
+    | "camera_move"
+    | "character_gesture"
+    | "spice_pour"
+    | "animation"
+    | "product_show"
+    | "recipe_step";
   target?: string;
   duration?: number; // in milliseconds
   animation?: string;
@@ -58,7 +64,7 @@ export interface Recipe {
   servings: number;
   prepTime: number; // minutes
   cookTime: number; // minutes
-  difficulty: 'easy' | 'medium' | 'hard';
+  difficulty: "easy" | "medium" | "hard";
   image: string;
   ingredients: RecipeIngredient[];
   steps: RecipeStep[];

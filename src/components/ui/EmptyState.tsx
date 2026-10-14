@@ -20,16 +20,16 @@ export function EmptyState({
 }: EmptyStateProps) {
   return (
     <div
-      className={`bg-white rounded-3xl p-10 sm:p-14 text-center border border-brand-sand/80 shadow-xs space-y-4 max-w-xl mx-auto ${className}`}
+      className={`bg-white rounded-xl p-8 sm:p-12 text-center border border-brand-sand/80 shadow-xs flex flex-col items-center gap-4 max-w-xl mx-auto ${className}`}
     >
-      <div className="w-16 h-16 rounded-2xl bg-brand-cream border border-brand-sand flex items-center justify-center text-brand-brown/60 mx-auto shadow-2xs">
-        {icon || <SearchIcon className="w-8 h-8 text-brand-brown/50" />}
+      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-brand-cream border border-brand-sand flex items-center justify-center text-brand-brown/60 shadow-2xs">
+        {icon || <SearchIcon className="w-7 h-7 sm:w-8 sm:h-8 text-brand-brown/50" />}
       </div>
-      <div className="space-y-1.5">
-        <h3 className="font-heading text-xl font-bold text-brand-brown">
+      <div className="flex flex-col gap-1.5">
+        <h3 className="font-heading text-lg sm:text-xl font-bold text-brand-brown">
           {title}
         </h3>
-        <p className="text-sm text-brand-brown/70 leading-relaxed max-w-md mx-auto">
+        <p className="text-xs sm:text-sm text-brand-brown/70 leading-relaxed max-w-md mx-auto">
           {description}
         </p>
       </div>

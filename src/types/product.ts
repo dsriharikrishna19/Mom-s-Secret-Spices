@@ -8,7 +8,7 @@ export interface Product {
   slug: string;
   name: string;
   description: string;
-  category: 'spice' | 'blend' | 'seasoning' | 'masala';
+  category: "spice" | "blend" | "seasoning" | "masala";
   image: string;
   packSizes: PackSize[];
   ingredients: string[];
@@ -21,15 +21,15 @@ export interface Product {
 export interface PackSize {
   id: string;
   weight: number;
-  unit: 'g' | 'kg' | 'ml' | 'l';
+  unit: "g" | "kg" | "ml" | "l";
   mrp: number;
-  currency: 'INR' | 'USD';
+  currency: "INR" | "USD";
   available: boolean;
 }
 
 export interface ProductCatalogueFilter {
   category?: string;
   search?: string;
-  sortBy?: 'name' | 'price' | 'newest';
-  sortOrder?: 'asc' | 'desc';
+  sortBy?: "name" | "price" | "newest";
+  sortOrder?: "asc" | "desc";
 }

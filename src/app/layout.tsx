@@ -17,7 +17,8 @@ const sora = Sora({
   display: "swap",
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://momssecretspices.com";
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://momssecretspices.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -63,7 +64,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"

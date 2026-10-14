@@ -13,7 +13,7 @@ export type {
   KitchenScene,
   AnimationClip,
   ParticleEffect,
-} from './types';
+} from "./types";
 
 export {
   DEFAULT_SCENE_CONFIG,
@@ -21,4 +21,4 @@ export {
   CHARACTER_ANIMATIONS,
   VIEWPORT_CONFIGS,
   QUALITY_PRESETS,
-} from './config';
+} from "./config";

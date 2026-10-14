@@ -4,19 +4,19 @@
  */
 
 export type SceneState =
-  | 'welcome'
-  | 'idle'
-  | 'listening'
-  | 'thinking'
-  | 'speaking'
-  | 'cooking'
-  | 'show_spice'
-  | 'product_spotlight'
-  | 'complete'
-  | 'error';
+  | "welcome"
+  | "idle"
+  | "listening"
+  | "thinking"
+  | "speaking"
+  | "cooking"
+  | "show_spice"
+  | "product_spotlight"
+  | "complete"
+  | "error";
 
 export interface ConversationMessage {
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   content: string;
   timestamp: Date;
   audioUrl?: string;

@@ -3,8 +3,19 @@
  * Simplifies imports: import { Product, getProductBySlug } from '@/features/products'
  */
 
-export type { Product, ProductPackSize, ProductFilters, ProductEnquiry } from './types';
-export { PRODUCTS, getProductBySlug, getProductById, getCategories, getAllProducts } from './data';
+export type {
+  Product,
+  ProductPackSize,
+  ProductFilters,
+  ProductEnquiry,
+} from "./types";
+export {
+  PRODUCTS,
+  getProductBySlug,
+  getProductById,
+  getCategories,
+  getAllProducts,
+} from "./data";
 export {
   filterAndSortProducts,
   getLowestPrice,
@@ -13,4 +24,4 @@ export {
   getEmailEnquiry,
   getTotalProductsCount,
   getProductsByCategory,
-} from './utils';
+} from "./utils";

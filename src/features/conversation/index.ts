@@ -12,7 +12,7 @@ export type {
   Recipe,
   RecipeIngredient,
   RecipeStep,
-} from './types';
+} from "./types";
 
 export {
   RECIPES,
@@ -20,4 +20,4 @@ export {
   getRecipeById,
   getAllRecipes,
   getRecipesByDifficulty,
-} from './data';
+} from "./data";

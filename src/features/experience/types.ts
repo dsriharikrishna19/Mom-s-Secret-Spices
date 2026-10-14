@@ -3,7 +3,7 @@
  * Used for Three.js and React Three Fiber integration
  */
 
-export type ViewportMode = 'desktop' | 'tablet' | 'mobile';
+export type ViewportMode = "desktop" | "tablet" | "mobile";
 
 export interface CameraConfig {
   position: [number, number, number];
@@ -14,7 +14,7 @@ export interface CameraConfig {
 }
 
 export interface LightConfig {
-  type: 'directional' | 'ambient' | 'point' | 'spot';
+  type: "directional" | "ambient" | "point" | "spot";
   intensity: number;
   position?: [number, number, number];
   color?: string;
@@ -65,7 +65,7 @@ export interface AnimationClip {
 }
 
 export interface ParticleEffect {
-  type: 'steam' | 'smoke' | 'spice' | 'sparkle';
+  type: "steam" | "smoke" | "spice" | "sparkle";
   position: [number, number, number];
   duration: number;
   intensity: number;

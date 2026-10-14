@@ -11,7 +11,7 @@ export interface Recipe {
   servings: number;
   prepTime: number; // minutes
   cookTime: number; // minutes
-  difficulty: 'easy' | 'medium' | 'hard';
+  difficulty: "easy" | "medium" | "hard";
   image: string;
   ingredients: RecipeIngredient[];
   steps: RecipeStep[];
