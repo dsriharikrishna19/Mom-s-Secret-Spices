@@ -18,7 +18,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center font-semibold rounded-xl transition-all focus:outline-hidden focus:ring-2 focus:ring-brand-terracotta/40 disabled:opacity-50 disabled:pointer-events-none";
+    "inline-flex items-center justify-center font-semibold rounded-xl cursor-pointer transition-all focus:outline-hidden focus:ring-2 focus:ring-brand-terracotta/40 disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed";
 
   const sizeStyles = {
     sm: "px-3.5 py-1.5 text-xs",

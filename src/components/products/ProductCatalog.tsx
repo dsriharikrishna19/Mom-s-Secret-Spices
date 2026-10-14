@@ -87,7 +87,7 @@ export default function ProductCatalog({
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold capitalize transition-all whitespace-nowrap shrink-0 ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold capitalize cursor-pointer transition-all whitespace-nowrap shrink-0 ${
                   selectedCategory === cat
                     ? "bg-brand-terracotta text-white shadow-2xs"
                     : "bg-brand-cream text-brand-brown/70 hover:bg-brand-sand/60"
