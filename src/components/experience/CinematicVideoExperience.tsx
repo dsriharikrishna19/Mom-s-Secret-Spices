@@ -40,7 +40,7 @@ export default function CinematicVideoExperience() {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto flex flex-col gap-8 sm:gap-10">
+    <div className="w-full max-w-7xl mx-auto flex flex-col gap-8 sm:gap-10">
       {/* Cinematic 3D Video Showcase Player */}
       <div className="relative rounded-2xl overflow-hidden border border-brand-sand shadow-xl bg-black aspect-16/9 group">
         <video
