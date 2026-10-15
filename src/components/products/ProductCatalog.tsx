@@ -77,9 +77,9 @@ export default function ProductCatalog() {
         </div>
 
         {/* Filters and Sort */}
-        <div className="flex flex-wrap items-center gap-3">
-          {/* Category Chips */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
+          {/* Category Chips with smooth scroll on mobile */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none w-full sm:w-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -96,20 +96,26 @@ export default function ProductCatalog() {
           </div>
 
           {/* Sort Dropdown */}
-          <div className="flex items-center gap-2 pl-2 border-l border-brand-sand shrink-0">
-            <FilterIcon className="w-3.5 h-3.5 text-brand-brown/60" />
-            <select
-              value={sortBy}
-              aria-label="Sort spices"
-              onChange={(e) =>
-                setSortBy(e.target.value as "name" | "price-asc" | "price-desc")
-              }
-              className="bg-brand-cream/60 border border-brand-sand text-xs font-medium text-brand-brown rounded-lg px-2.5 py-1.5 focus:outline-hidden focus:border-brand-terracotta"
-            >
-              <option value="name">Alphabetical</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-            </select>
+          <div className="flex items-center justify-between sm:justify-start gap-2 pt-2 sm:pt-0 sm:pl-2 border-t sm:border-t-0 sm:border-l border-brand-sand shrink-0">
+            <span className="flex items-center gap-1.5 text-xs text-brand-brown/70 sm:hidden">
+              <FilterIcon className="w-3.5 h-3.5 text-brand-brown/60" />
+              <span>Sort:</span>
+            </span>
+            <div className="flex items-center gap-2">
+              <FilterIcon className="w-3.5 h-3.5 text-brand-brown/60 hidden sm:inline-block" />
+              <select
+                value={sortBy}
+                aria-label="Sort spices"
+                onChange={(e) =>
+                  setSortBy(e.target.value as "name" | "price-asc" | "price-desc")
+                }
+                className="bg-brand-cream/60 border border-brand-sand text-xs font-medium text-brand-brown rounded-lg px-2.5 py-1.5 focus:outline-hidden focus:border-brand-terracotta"
+              >
+                <option value="name">Alphabetical</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
